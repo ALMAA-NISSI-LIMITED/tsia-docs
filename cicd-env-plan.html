@@ -1,0 +1,542 @@
+<title>CI/CD Env Security Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:        #0E1B2A;
+    --card:      #162130;
+    --card-2:    #1e2d3e;
+    --border:    rgba(255,255,255,0.07);
+    --green:     #2FD36A;
+    --green-dim: rgba(47,211,106,0.12);
+    --amber:     #f59e0b;
+    --red:       #ef4444;
+    --red-dim:   rgba(239,68,68,0.10);
+    --text:      #f1f5f9;
+    --muted:     #64748b;
+    --faint:     #334155;
+    --code-bg:   #0b1621;
+    --mono:      'DM Mono', ui-monospace, monospace;
+    --sans:      'DM Sans', system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg:        #F2F2F5;
+      --card:      #ffffff;
+      --card-2:    #f8fafc;
+      --border:    rgba(0,0,0,0.08);
+      --green:     #00873E;
+      --green-dim: rgba(0,135,62,0.08);
+      --red-dim:   rgba(239,68,68,0.06);
+      --text:      #0E1B2A;
+      --muted:     #64748b;
+      --faint:     #cbd5e1;
+      --code-bg:   #0E1B2A;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg:        #F2F2F5;
+    --card:      #ffffff;
+    --card-2:    #f8fafc;
+    --border:    rgba(0,0,0,0.08);
+    --green:     #00873E;
+    --green-dim: rgba(0,135,62,0.08);
+    --red-dim:   rgba(239,68,68,0.06);
+    --text:      #0E1B2A;
+    --muted:     #64748b;
+    --faint:     #cbd5e1;
+    --code-bg:   #0E1B2A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 2.5rem 1rem 4rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+  .doc-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  .doc-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 520px;
+  }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 2rem; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+  .card-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── Steps ── */
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0 1rem;
+    position: relative;
+  }
+  .step:not(:last-child) .step-line {
+    position: absolute;
+    left: 15px;
+    top: 2rem;
+    bottom: -0.5rem;
+    width: 1px;
+    background: var(--border);
+  }
+  .step-num {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--green-dim);
+    border: 1px solid rgba(47,211,106,0.25);
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--mono);
+  }
+  .step-body { padding-bottom: 1.25rem; }
+  .step-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    padding-top: 0.35rem;
+    margin-bottom: 0.25rem;
+  }
+  .step-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── Code ── */
+  pre, code {
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  code {
+    background: var(--code-bg);
+    color: var(--green);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 11.5px;
+  }
+  pre {
+    background: var(--code-bg);
+    color: #cbd5e1;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow-x: auto;
+    line-height: 1.65;
+    margin-top: 0.75rem;
+    tab-size: 2;
+  }
+  pre .cm  { color: #64748b; font-style: italic; }
+  pre .kw  { color: #7dd3fc; }
+  pre .str { color: #86efac; }
+  pre .var { color: #fde68a; }
+  pre .fn  { color: #c4b5fd; }
+
+  /* ── Secrets table ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-top: 0.75rem;
+  }
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  .secret-name {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--green);
+    white-space: nowrap;
+  }
+  .secret-val { color: var(--muted); font-size: 12px; }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .tag-required { background: var(--red-dim); color: var(--red); }
+  .tag-env      { background: var(--green-dim); color: var(--green); }
+
+  /* ── Do/Don't ── */
+  .dontdo { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  @media (max-width: 560px) { .dontdo { grid-template-columns: 1fr; } }
+  .do-card { border-color: rgba(47,211,106,0.2); }
+  .dont-card { border-color: rgba(239,68,68,0.2); }
+  .do-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .do-label.green { color: var(--green); }
+  .do-label.red   { color: var(--red); }
+  .do-card ul, .dont-card ul { list-style: none; }
+  .do-card li, .dont-card li {
+    font-size: 12.5px;
+    color: var(--muted);
+    padding: 0.2rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+  }
+  .do-card li::before   { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .dont-card li::before { content: '✗'; color: var(--red);   font-weight: 700; flex-shrink: 0; }
+
+  /* ── Pipeline diagram ── */
+  .pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .pipe-node {
+    background: var(--card-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.875rem;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .pipe-node.green { background: var(--green-dim); border-color: rgba(47,211,106,0.25); color: var(--green); }
+  .pipe-arrow {
+    color: var(--muted);
+    font-size: 14px;
+    padding: 0 0.4rem;
+  }
+  .pipe-gate {
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.25);
+    border-radius: 8px;
+    padding: 0.5rem 0.875rem;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--amber);
+    white-space: nowrap;
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="doc-header">
+    <div class="eyebrow">TSIA Backend · DevOps</div>
+    <h1 class="doc-title">Secure Env + CI/CD Plan</h1>
+    <p class="doc-subtitle">How environment secrets flow from GitHub to production without ever touching the repository.</p>
+  </header>
+
+  <!-- ── Strategy ── -->
+  <section class="section">
+    <div class="section-label">Strategy</div>
+    <div class="card">
+      <div class="card-title">Single secret — base64-encoded <code>.env</code></div>
+      <div class="card-desc">
+        With 50+ env vars, managing them one-by-one in GitHub Secrets is painful. Instead, prepare a production <code>.env</code> locally, base64-encode it, and store the result as one GitHub Secret (<code>ENV_PROD</code>). The deploy job writes it to the server on every deploy. Individual secrets are used only for SSH credentials.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">GitHub Environment with approval gate</div>
+      <div class="card-desc">
+        Create a GitHub <strong>Environment</strong> named <code>production</code>. Attach all production secrets to it and require at least one reviewer before any deploy runs. This means a bad push can't auto-deploy — someone has to approve it.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pipeline ── -->
+  <section class="section">
+    <div class="section-label">Pipeline Shape</div>
+    <div class="pipeline">
+      <div class="pipe-node">Push to <code>main</code></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">PHPUnit Tests</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-gate">👤 Reviewer Approves</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node green">SSH Deploy</div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:0.6rem;">Feature branch pushes and PRs run <em>tests only</em> — no deploy job, no production secrets exposed.</p>
+  </section>
+
+  <!-- ── Secrets ── -->
+  <section class="section">
+    <div class="section-label">GitHub Secrets to Create</div>
+    <div class="card" style="padding:0.75rem 0;">
+      <table>
+        <thead>
+          <tr>
+            <th>Secret name</th>
+            <th>Value</th>
+            <th>Where</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="secret-name">SSH_PRIVATE_KEY</span></td>
+            <td><span class="secret-val">Private key of the deploy keypair (generated in Step 1)</span></td>
+            <td><span class="tag tag-required">Env: production</span></td>
+          </tr>
+          <tr>
+            <td><span class="secret-name">SSH_HOST</span></td>
+            <td><span class="secret-val"><code>34.173.51.226</code></span></td>
+            <td><span class="tag tag-required">Env: production</span></td>
+          </tr>
+          <tr>
+            <td><span class="secret-name">SSH_USER</span></td>
+            <td><span class="secret-val"><code>vineyardtransportationke</code></span></td>
+            <td><span class="tag tag-required">Env: production</span></td>
+          </tr>
+          <tr>
+            <td><span class="secret-name">ENV_PROD</span></td>
+            <td><span class="secret-val">Output of <code>base64 -w0 .env</code> run on the production env file</span></td>
+            <td><span class="tag tag-env">Env: production</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── One-time Setup ── -->
+  <section class="section">
+    <div class="section-label">One-Time Setup Steps</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Generate a deploy SSH keypair</div>
+          <div class="step-desc">Run locally — do not use your personal key.</div>
+          <pre>ssh-keygen -t ed25519 -C "tsia-deploy" -f ~/.ssh/tsia_deploy -N ""</pre>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Authorise the key on the server</div>
+          <div class="step-desc">SSH in once and append the public key.</div>
+          <pre>cat ~/.ssh/tsia_deploy.pub | ssh vineyardtransportationke@34.173.51.226 \
+  "cat >> ~/.ssh/authorized_keys"</pre>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Add the private key to GitHub Secrets</div>
+          <div class="step-desc">GitHub → Repo → Settings → Environments → production → Add secret → <code>SSH_PRIVATE_KEY</code> → paste the contents of <code>~/.ssh/tsia_deploy</code> (the private file, no extension).</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <div class="step-title">Base64-encode the production <code>.env</code></div>
+          <div class="step-desc">Run on a machine that has the full production env file. Paste the output into the <code>ENV_PROD</code> secret.</div>
+          <pre>base64 -w0 /path/to/prod.env | pbcopy   <span class="cm"># macOS</span>
+base64 -w0 /path/to/prod.env | xclip    <span class="cm"># Linux</span></pre>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <div class="step-title">Create the GitHub Environment</div>
+          <div class="step-desc">GitHub → Settings → Environments → New → name it <code>production</code> → enable <strong>Required reviewers</strong> → add yourself (and any other approver). Add all four secrets there, not at the repo level.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <div class="step-title">Add the workflow file to the repo</div>
+          <div class="step-desc">Create <code>.github/workflows/deploy.yml</code> — see below.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Workflow file ── -->
+  <section class="section">
+    <div class="section-label">Workflow File</div>
+    <p style="font-size:12.5px;color:var(--muted);margin-bottom:0.75rem;">Save as <code>.github/workflows/deploy.yml</code></p>
+<pre><span class="kw">name:</span> <span class="str">CI / CD</span>
+
+<span class="kw">on:</span>
+  <span class="kw">push:</span>
+    <span class="kw">branches:</span> [<span class="str">main</span>]
+  <span class="kw">pull_request:</span>
+    <span class="kw">branches:</span> [<span class="str">main</span>]
+
+<span class="kw">jobs:</span>
+
+  <span class="cm"># ── Run on every push / PR ───────────────────</span>
+  <span class="fn">test:</span>
+    <span class="kw">runs-on:</span> <span class="str">ubuntu-latest</span>
+    <span class="kw">steps:</span>
+      - <span class="kw">uses:</span> <span class="str">actions/checkout@v4</span>
+      - <span class="kw">uses:</span> <span class="str">shivammathur/setup-php@v2</span>
+        <span class="kw">with:</span>
+          <span class="kw">php-version:</span> <span class="str">'8.4'</span>
+          <span class="kw">extensions:</span> <span class="str">mbstring, pdo_sqlite, bcmath, zip</span>
+          <span class="kw">coverage:</span> <span class="str">none</span>
+      - <span class="kw">run:</span> <span class="str">composer install --no-interaction --prefer-dist --no-progress</span>
+      - <span class="kw">run:</span> <span class="str">cp .env.example .env && php artisan key:generate</span>
+      - <span class="kw">run:</span> <span class="str">php artisan test --parallel</span>
+
+  <span class="cm"># ── Deploy only when main passes + reviewer approves ─</span>
+  <span class="fn">deploy:</span>
+    <span class="kw">needs:</span> <span class="str">test</span>
+    <span class="kw">runs-on:</span> <span class="str">ubuntu-latest</span>
+    <span class="kw">environment:</span> <span class="str">production</span>   <span class="cm"># ← triggers the approval gate</span>
+    <span class="kw">if:</span> <span class="str">github.ref == 'refs/heads/main'</span>
+    <span class="kw">steps:</span>
+      - <span class="kw">name:</span> <span class="str">Deploy via SSH</span>
+        <span class="kw">uses:</span> <span class="str">appleboy/ssh-action@v1</span>
+        <span class="kw">with:</span>
+          <span class="kw">host:</span>     <span class="var">${{ secrets.SSH_HOST }}</span>
+          <span class="kw">username:</span> <span class="var">${{ secrets.SSH_USER }}</span>
+          <span class="kw">key:</span>      <span class="var">${{ secrets.SSH_PRIVATE_KEY }}</span>
+          <span class="kw">script:</span> |
+            <span class="cm"># Write production .env from secret</span>
+            echo "<span class="var">${{ secrets.ENV_PROD }}</span>" | base64 -d \
+              > /var/www/html/.env
+
+            <span class="cm"># Run the existing deploy script</span>
+            cd /var/www/html
+            bash deploy.sh</pre>
+  </section>
+
+  <!-- ── Rules ── -->
+  <section class="section">
+    <div class="section-label">Rules</div>
+    <div class="dontdo">
+      <div class="card do-card">
+        <div class="do-label green">Commit these</div>
+        <ul>
+          <li><code>.env.example</code> — template with no values</li>
+          <li><code>.github/workflows/deploy.yml</code></li>
+          <li><code>deploy.sh</code></li>
+          <li><code>docker-compose.yml</code></li>
+        </ul>
+      </div>
+      <div class="card dont-card">
+        <div class="do-label red">Never commit</div>
+        <ul>
+          <li><code>.env</code> — ever, on any branch</li>
+          <li><code>.env.production</code> or any env variant</li>
+          <li>SSH private keys</li>
+          <li>API keys, tokens, passwords inline</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Updating the env ── -->
+  <section class="section">
+    <div class="section-label">Updating the Production Env Later</div>
+    <div class="card">
+      <div class="card-desc">When a value changes (new API key, rotated secret):
+        <ol style="margin-top:0.5rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.3rem;">
+          <li>Edit your local copy of the production <code>.env</code></li>
+          <li>Re-run <code>base64 -w0 prod.env</code></li>
+          <li>Update the <code>ENV_PROD</code> secret in GitHub (Settings → Environments → production)</li>
+          <li>Trigger a deploy — the new env is written on the next run</li>
+        </ol>
+      </div>
+    </div>
+    <div class="card" style="border-color:rgba(245,158,11,0.2);margin-top:0;">
+      <div class="card-title" style="color:var(--amber);">Keep a local encrypted backup</div>
+      <div class="card-desc">Store the production <code>.env</code> in a password manager (1Password, Bitwarden) or an encrypted vault — not in a shared Slack channel or email. If the file is lost, the only source of truth left is the base64 blob in GitHub Secrets, which you can decode: <code>gh secret get ENV_PROD | base64 -d</code></div>
+    </div>
+  </section>
+
+</div>

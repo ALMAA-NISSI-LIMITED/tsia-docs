@@ -1,0 +1,701 @@
+<title>TSIA Brand Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+  /* ── Token system ── */
+  :root {
+    --navy:       #0E1B2A;
+    --navy-dim:   #162130;
+    --green:      #00873E;
+    --green-soft: rgba(0,135,62,.10);
+    --green-mid:  rgba(0,135,62,.20);
+    --spring:     #2FD36A;
+    --page:       #F2F2F5;
+    --card:       #FFFFFF;
+    --border:     rgba(14,27,42,.10);
+    --text-1:     #0E1B2A;
+    --text-2:     rgba(14,27,42,.62);
+    --text-3:     rgba(14,27,42,.42);
+    --mono-bg:    rgba(14,27,42,.06);
+    --swatch-shadow: 0 2px 8px rgba(14,27,42,.12);
+    --card-shadow:   0 1px 3px rgba(14,27,42,.06), 0 4px 16px rgba(14,27,42,.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page:       #0A1219;
+      --card:       #131F2E;
+      --border:     rgba(255,255,255,.08);
+      --text-1:     #EEF2F7;
+      --text-2:     rgba(238,242,247,.60);
+      --text-3:     rgba(238,242,247,.36);
+      --mono-bg:    rgba(255,255,255,.06);
+      --swatch-shadow: 0 2px 8px rgba(0,0,0,.40);
+      --card-shadow:   0 1px 3px rgba(0,0,0,.30), 0 4px 16px rgba(0,0,0,.30);
+      --green-soft: rgba(47,211,106,.10);
+      --green-mid:  rgba(47,211,106,.18);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --page:       #0A1219;
+    --card:       #131F2E;
+    --border:     rgba(255,255,255,.08);
+    --text-1:     #EEF2F7;
+    --text-2:     rgba(238,242,247,.60);
+    --text-3:     rgba(238,242,247,.36);
+    --mono-bg:    rgba(255,255,255,.06);
+    --swatch-shadow: 0 2px 8px rgba(0,0,0,.40);
+    --card-shadow:   0 1px 3px rgba(0,0,0,.30), 0 4px 16px rgba(0,0,0,.30);
+    --green-soft: rgba(47,211,106,.10);
+    --green-mid:  rgba(47,211,106,.18);
+  }
+
+  /* ── Reset & base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--page);
+    color: var(--text-1);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--navy);
+    padding: 80px 32px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(0,135,62,.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+  .hero-mark {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    background: var(--green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .hero-mark svg { width: 32px; height: 32px; }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #fff;
+    text-wrap: balance;
+    margin-bottom: 14px;
+  }
+  .hero h1 span { color: var(--green); }
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(238,242,247,.55);
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-tag {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(238,242,247,.45);
+    letter-spacing: 0.02em;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 100px;
+  }
+
+  /* ── Main layout ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 64px; }
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-1);
+    margin-bottom: 6px;
+    text-wrap: balance;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--text-2);
+    margin-bottom: 28px;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 64px;
+  }
+
+  /* ── Color swatches ── */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+  .swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    background: var(--card);
+  }
+  .swatch-color {
+    height: 80px;
+    width: 100%;
+  }
+  .swatch-info {
+    padding: 12px 14px;
+  }
+  .swatch-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-1);
+    margin-bottom: 3px;
+  }
+  .swatch-hex {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .swatch-role {
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* ── Type specimens ── */
+  .type-grid { display: flex; flex-direction: column; gap: 2px; }
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 16px 20px;
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    flex-wrap: wrap;
+  }
+  .type-specimen { color: var(--text-1); line-height: 1.2; }
+  .type-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-3);
+    white-space: nowrap;
+    margin-left: auto;
+    align-self: center;
+  }
+
+  /* ── Token table ── */
+  .token-table { width: 100%; border-collapse: collapse; }
+  .token-table th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-3);
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .token-table td {
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--text-2);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .token-table tr:last-child td { border-bottom: none; }
+  .token-table td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--green);
+    white-space: nowrap;
+  }
+  .token-wrap {
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    overflow-x: auto;
+  }
+
+  /* ── Logo section ── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .logo-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+  }
+  .logo-bg {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .logo-bg img { max-height: 56px; max-width: 100%; object-fit: contain; }
+  .logo-caption {
+    background: var(--card);
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--text-3);
+    font-weight: 500;
+  }
+
+  /* ── Usage rules ── */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 540px) { .rules-grid { grid-template-columns: 1fr; } }
+  .rule-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+  }
+  .rule-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .rule-flag.do   { background: var(--green-soft); color: var(--green); }
+  .rule-flag.dont { background: rgba(234,67,53,.10); color: #C2261B; }
+  .rule-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .rule-card li {
+    font-size: 13.5px;
+    color: var(--text-2);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .rule-card.do li::before   { content: '·'; position: absolute; left: 4px; color: var(--green); font-weight: 700; }
+  .rule-card.dont li::before { content: '·'; position: absolute; left: 4px; color: #EA4335; font-weight: 700; }
+
+  /* ── Motion tokens ── */
+  .motion-demo {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .motion-pill {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: var(--card-shadow);
+    flex: 1;
+    min-width: 140px;
+  }
+  .motion-pill-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-3);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .motion-pill-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--text-1);
+    font-weight: 500;
+  }
+
+  /* ── Inline token chip ── */
+  code {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82em;
+    background: var(--mono-bg);
+    color: var(--text-1);
+    padding: 2px 7px;
+    border-radius: 5px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    color: var(--text-3);
+    border-top: 1px solid var(--border);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<!-- Hero -->
+<header class="hero">
+  <p class="hero-eyebrow">Design System · v1.0</p>
+  <div class="hero-mark">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="7" fill="white" opacity="0.9"/>
+      <circle cx="16" cy="16" r="3.5" fill="#00873E"/>
+      <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+    </svg>
+  </div>
+  <h1>TSIA <span>Brand</span> Guide</h1>
+  <p class="hero-sub">The visual language for Transport Systems Infrastructure Africa — admin dashboard, mobile apps, and developer tooling.</p>
+  <div class="hero-meta">
+    <span class="hero-tag">SafiRides Platform</span>
+    <span class="hero-tag">DM Sans · DM Mono</span>
+    <span class="hero-tag">Kenya · KES · EAT</span>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Color -->
+  <section class="section">
+    <p class="section-label">Color</p>
+    <h2 class="section-title">Brand palette</h2>
+    <p class="section-desc">Two anchors — navy and green — define every surface. Use the accent green for a single focal action per screen. All other colors are semantic.</p>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#00873E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">TSIA Green</div>
+          <div class="swatch-hex">#00873E</div>
+          <div class="swatch-role">Primary action · links · active states</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2FD36A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Spring Green</div>
+          <div class="swatch-hex">#2FD36A</div>
+          <div class="swatch-role">Dark mode accent variant</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0E1B2A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brand Navy</div>
+          <div class="swatch-hex">#0E1B2A</div>
+          <div class="swatch-role">Primary text · sidebar · dark surfaces</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F2F2F5; border: 1px solid #E5E5EA;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Page Ground</div>
+          <div class="swatch-hex">#F2F2F5</div>
+          <div class="swatch-role">Admin page background</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FFFFFF; border: 1px solid #E5E5EA;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Card White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-role">Card & navbar surface</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0A1219;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Night Ground</div>
+          <div class="swatch-hex">#0A1219</div>
+          <div class="swatch-role">Dark mode page background</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Semantic color -->
+  <section class="section">
+    <p class="section-label">Color · Semantic</p>
+    <h2 class="section-title">Status &amp; feedback</h2>
+    <p class="section-desc">Semantic colors encode state. They are distinct from the accent and are never used decoratively.</p>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4fd69c;"></div>
+        <div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#4FD69C</div><div class="swatch-role">Completed · verified · online</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#fc7c5f;"></div>
+        <div class="swatch-info"><div class="swatch-name">Warning</div><div class="swatch-hex">#FC7C5F</div><div class="swatch-role">Pending · review needed</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f5365c;"></div>
+        <div class="swatch-info"><div class="swatch-name">Danger</div><div class="swatch-hex">#F5365C</div><div class="swatch-role">Error · SOS · blocked</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#37d5f2;"></div>
+        <div class="swatch-info"><div class="swatch-name">Info</div><div class="swatch-hex">#37D5F2</div><div class="swatch-role">Informational · neutral alerts</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Typography -->
+  <section class="section">
+    <p class="section-label">Typography</p>
+    <h2 class="section-title">DM Sans — the one typeface</h2>
+    <p class="section-desc">The brand uses DM Sans exclusively across admin, mobile, and developer docs. Weight and size provide all hierarchy. DM Mono is used for tokens, codes, and data values only.</p>
+    <div class="type-grid">
+      <div class="type-row">
+        <span class="type-specimen" style="font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;">Dashboard</span>
+        <span class="type-meta">DM Sans 800 · 35px · −0.03em</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;">Ride Requests</span>
+        <span class="type-meta">DM Sans 700 · 24px · −0.02em</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-size:1.1rem;font-weight:600;letter-spacing:-0.01em;">Driver Earnings Overview</span>
+        <span class="type-meta">DM Sans 600 · 18px · −0.01em</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-size:1rem;font-weight:400;">Average fare this week was KES 480, up 12% from last week.</span>
+        <span class="type-meta">DM Sans 400 · 16px</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-size:0.85rem;font-weight:500;color:rgba(14,27,42,.55);">Last updated 14:32 EAT</span>
+        <span class="type-meta">DM Sans 500 · 13.5px · text-3</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-size:0.7rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:rgba(14,27,42,.42);">Surge Zone</span>
+        <span class="type-meta">DM Sans 600 · 11px · UC · +1.8px</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-family:'DM Mono',monospace;font-size:0.85rem;font-weight:500;">KES 1,240 · ride_id: 7f3a9c · 2.0× surge</span>
+        <span class="type-meta">DM Mono 500 · 13.5px</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Spacing & radius -->
+  <section class="section">
+    <p class="section-label">Spacing &amp; Radius</p>
+    <h2 class="section-title">Layout tokens</h2>
+    <p class="section-desc">A consistent 8pt grid with a 16px page margin. The 48px touch target minimum satisfies iOS and Android simultaneously.</p>
+    <div class="token-wrap">
+      <table class="token-table">
+        <thead>
+          <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>--space-1</td><td>4px</td><td>Icon gaps, tight label padding</td></tr>
+          <tr><td>--space-2</td><td>8px</td><td>Grid unit, chip padding</td></tr>
+          <tr><td>--space-3</td><td>12px</td><td>Card inner gap</td></tr>
+          <tr><td>--space-4</td><td>16px</td><td>Page margin, section padding</td></tr>
+          <tr><td>--space-6</td><td>24px</td><td>Section gap, large card padding</td></tr>
+          <tr><td>--space-8</td><td>32px</td><td>Section break</td></tr>
+          <tr><td>--target-min</td><td>48px</td><td>Minimum tap/click target (iOS + Android)</td></tr>
+          <tr><td>--radius-sm</td><td>8px</td><td>Chips, badges, small buttons</td></tr>
+          <tr><td>--radius</td><td>12px</td><td>Cards, inputs, standard buttons</td></tr>
+          <tr><td>--radius-lg</td><td>16px</td><td>Modals, bottom sheets, large cards</td></tr>
+          <tr><td>--radius-full</td><td>9999px</td><td>Pills, tags, avatar rings</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Logo -->
+  <section class="section">
+    <p class="section-label">Logo</p>
+    <h2 class="section-title">Logo usage</h2>
+    <p class="section-desc">The logo file lives at <code>public/images/logo.png</code> (light) and <code>public/images/dark_logo.png</code>. Use the version that contrasts with its background.</p>
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="logo-bg" style="background:#F2F2F5;">
+          <img src="../public/images/logo.png" alt="TSIA logo on light">
+        </div>
+        <div class="logo-caption">On light background</div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-bg" style="background:#0E1B2A;">
+          <img src="../public/images/logo.png" alt="TSIA logo on navy" style="filter: brightness(0) invert(1);">
+        </div>
+        <div class="logo-caption">On brand navy — invert to white</div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-bg" style="background:#00873E;">
+          <img src="../public/images/logo.png" alt="TSIA logo on green" style="filter: brightness(0) invert(1);">
+        </div>
+        <div class="logo-caption">On green accent — white only</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Usage rules -->
+  <section class="section">
+    <p class="section-label">Logo · Rules</p>
+    <h2 class="section-title">Do and don't</h2>
+    <p class="section-desc">Keep the mark legible and on-brand at every size.</p>
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <span class="rule-flag do">✓ Do</span>
+        <ul>
+          <li>Use on white, navy, or solid green only</li>
+          <li>Maintain a clear space equal to the mark height on all sides</li>
+          <li>Scale proportionally — never stretch</li>
+          <li>Use the white version on dark or colored backgrounds</li>
+          <li>Minimum display size: 24px height</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <span class="rule-flag dont">✕ Don't</span>
+        <ul>
+          <li>Place on busy photography or gradients</li>
+          <li>Recolor the mark to any non-brand color</li>
+          <li>Add drop shadows or effects</li>
+          <li>Use the dark mark on dark backgrounds</li>
+          <li>Combine with the SafiRides wordmark — they are distinct brands</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Motion -->
+  <section class="section">
+    <p class="section-label">Motion</p>
+    <h2 class="section-title">Animation tokens</h2>
+    <p class="section-desc">All transitions use a single easing. Speed varies by purpose — UI feedback is snappy, page transitions are deliberate.</p>
+    <div class="motion-demo">
+      <div class="motion-pill">
+        <div class="motion-pill-label">Micro</div>
+        <div class="motion-pill-val">150ms</div>
+      </div>
+      <div class="motion-pill">
+        <div class="motion-pill-label">Standard</div>
+        <div class="motion-pill-val">280ms</div>
+      </div>
+      <div class="motion-pill">
+        <div class="motion-pill-label">Emphasis</div>
+        <div class="motion-pill-val">420ms</div>
+      </div>
+      <div class="motion-pill">
+        <div class="motion-pill-label">Easing</div>
+        <div class="motion-pill-val">easeOutCubic</div>
+      </div>
+      <div class="motion-pill">
+        <div class="motion-pill-label">Sheet spring</div>
+        <div class="motion-pill-val">spring()</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Voice -->
+  <section class="section">
+    <p class="section-label">Voice &amp; Tone</p>
+    <h2 class="section-title">How we write</h2>
+    <p class="section-desc">The platform serves drivers, riders, and fleet operators across Kenya. Write plainly and act on behalf of the person at the screen.</p>
+    <div class="token-wrap">
+      <table class="token-table">
+        <thead>
+          <tr><th>Principle</th><th>Instead of</th><th>Write</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Action labels say what happens</td><td>Submit · OK · Confirm</td><td>Publish fare · Approve driver · Cancel ride</td></tr>
+          <tr><td>Amounts always show currency</td><td>1,240 · +12%</td><td>KES 1,240 · +12% vs last week</td></tr>
+          <tr><td>Errors say what and how to fix</td><td>An error occurred</td><td>OTP expired — request a new one</td></tr>
+          <tr><td>Times use EAT explicitly</td><td>14:32 · 2h ago</td><td>14:32 EAT · 2 hrs ago</td></tr>
+          <tr><td>No apologies in UI copy</td><td>Sorry, we couldn't load …</td><td>Couldn't load rides — retry</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Admin-specific -->
+  <section class="section">
+    <p class="section-label">Admin Dashboard</p>
+    <h2 class="section-title">SCSS variables quick reference</h2>
+    <p class="section-desc">Edit <code>resources/sass/_variable.scss</code> then run <code>npm run dev</code> to recompile. Never hardcode hex values in Blade templates — use Bootstrap utility classes that map to these tokens.</p>
+    <div class="token-wrap">
+      <table class="token-table">
+        <thead>
+          <tr><th>SCSS Variable</th><th>Value</th><th>Maps to</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>$primary</td><td>#00873E</td><td>btn-primary, text-primary, bg-primary</td></tr>
+          <tr><td>$primary-800</td><td>#006830</td><td>hover / focus state of primary</td></tr>
+          <tr><td>$primary-300</td><td>#b3dfca</td><td>Light tint for alerts, badges</td></tr>
+          <tr><td>$title-text</td><td>#0E1B2A</td><td>Headings, sidebar text</td></tr>
+          <tr><td>$body-bg</td><td>#F2F2F5</td><td>Page background</td></tr>
+          <tr><td>$font-family-base</td><td>'DM Sans'</td><td>All body text</td></tr>
+          <tr><td>$font-family-title</td><td>'DM Sans'</td><td>All headings</td></tr>
+          <tr><td>$border-radius</td><td>12px</td><td>Default card / input radius</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  TSIA Brand Guide · SafiRides Platform · v1.0 · 2026
+</footer>

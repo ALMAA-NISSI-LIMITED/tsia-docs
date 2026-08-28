@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TSIA Docs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0E1B2A;
+    --card: #162130;
+    --border: rgba(255,255,255,0.07);
+    --green: #2FD36A;
+    --green-dim: rgba(47,211,106,0.10);
+    --text: #f1f5f9;
+    --muted: #64748b;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 560px; width: 100%; }
+  .logo {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+  .docs { display: flex; flex-direction: column; gap: 0.75rem; }
+  a.doc-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  a.doc-card:hover {
+    border-color: rgba(47,211,106,0.3);
+    background: #1e2d3e;
+  }
+  .doc-info { display: flex; flex-direction: column; gap: 0.2rem; }
+  .doc-title { font-size: 14px; font-weight: 500; color: var(--text); }
+  .doc-desc  { font-size: 12px; color: var(--muted); }
+  .doc-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green);
+    background: var(--green-dim);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .arrow { color: var(--muted); font-size: 18px; margin-left: 0.75rem; }
+  footer {
+    margin-top: 3rem;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">TSIA Platform</div>
+  <h1>Developer Docs</h1>
+  <p class="subtitle">Brand guidelines, environment reference, and DevOps runbooks.</p>
+
+  <div class="docs">
+    <a class="doc-card" href="brand-guide.html">
+      <div class="doc-info">
+        <span class="doc-title">Brand Guide</span>
+        <span class="doc-desc">Colors, typography, spacing, logo usage, motion tokens</span>
+      </div>
+      <span class="doc-tag">Design</span>
+    </a>
+
+    <a class="doc-card" href="cicd-env-plan.html">
+      <div class="doc-info">
+        <span class="doc-title">CI/CD &amp; Env Security Plan</span>
+        <span class="doc-desc">GitHub Secrets, SSH deploy keys, GitHub Actions workflow</span>
+      </div>
+      <span class="doc-tag">DevOps</span>
+    </a>
+
+    <a class="doc-card" href="env-reference.md">
+      <div class="doc-info">
+        <span class="doc-title">Environment Variable Reference</span>
+        <span class="doc-desc">Every .env key explained — what it does and where to get it</span>
+      </div>
+      <span class="doc-tag">Config</span>
+    </a>
+  </div>
+
+  <footer>&copy; <script>document.write(new Date().getFullYear())</script> TSIA — ALMAA NISSI LIMITED</footer>
+</div>
+</body>
+</html>
