@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TSIA Platform Requirements</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --green:       #00873E;
+    --spring:      #2FD36A;
+    --navy:        #0E1B2A;
+    --navy-mid:    #1A2F4A;
+    --navy-light:  #2B4A6E;
+
+    --bg:          #F2F2F5;
+    --surface:     #FFFFFF;
+    --surface-2:   #E8EBF0;
+    --border:      #D0D4DC;
+    --text:        #0E1B2A;
+    --text-mid:    #3A4D62;
+    --text-muted:  #6B7A92;
+    --mono-bg:     #E8F5EE;
+
+    --success:     #4FD69C;
+    --warning:     #FC7C5F;
+    --danger:      #F5365C;
+    --info:        #37D5F2;
+
+    --radius:      8px;
+    --radius-lg:   12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:         #0A1219;
+      --surface:    #131F2E;
+      --surface-2:  #1A2A3E;
+      --border:     #243348;
+      --text:       #E8EBF0;
+      --text-mid:   #9BAFC8;
+      --text-muted: #6B7A92;
+      --mono-bg:    #0D1F14;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:         #0A1219;
+    --surface:    #131F2E;
+    --surface-2:  #1A2A3E;
+    --border:     #243348;
+    --text:       #E8EBF0;
+    --text-mid:   #9BAFC8;
+    --text-muted: #6B7A92;
+    --mono-bg:    #0D1F14;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--navy);
+    color: #E8EBF0;
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,135,62,0.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(47,211,106,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--spring);
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    text-wrap: balance;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  .header h1 span { color: var(--spring); }
+
+  .header-sub {
+    font-size: 15px;
+    color: #9BAFC8;
+    max-width: 540px;
+    line-height: 1.6;
+  }
+
+  .header-meta {
+    margin-top: 32px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: #9BAFC8;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+
+  .meta-pill .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--spring);
+    flex-shrink: 0;
+  }
+
+  /* ── Layout ── */
+  .body-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 52px; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+
+  .section-header h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .card + .card { margin-top: 12px; }
+  .card-body { padding: 20px 24px; }
+
+  /* ── Domain cards ── */
+  .domain-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .domain-card + .domain-card { margin-top: 10px; }
+
+  .domain-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .domain-icon {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .domain-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  .domain-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ── Tags ── */
+  .tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .tag-live     { background: rgba(79,214,156,0.15); color: #1A9E6A; }
+  .tag-needed   { background: rgba(0,135,62,0.12);   color: var(--green); }
+  .tag-mobile   { background: rgba(47,211,106,0.12); color: #1A7A3A; }
+  .tag-internal { background: rgba(107,122,146,0.12); color: var(--text-muted); }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .tag-live     { background: rgba(79,214,156,0.18); color: #4FD69C; }
+    :root:not([data-theme="light"]) .tag-needed   { background: rgba(0,135,62,0.20);   color: var(--spring); }
+    :root:not([data-theme="light"]) .tag-mobile   { background: rgba(47,211,106,0.15); color: var(--spring); }
+    :root:not([data-theme="light"]) .tag-internal { background: rgba(107,122,146,0.15); color: #8899AA; }
+  }
+  :root[data-theme="dark"] .tag-live     { background: rgba(79,214,156,0.18); color: #4FD69C; }
+  :root[data-theme="dark"] .tag-needed   { background: rgba(0,135,62,0.20);   color: var(--spring); }
+  :root[data-theme="dark"] .tag-mobile   { background: rgba(47,211,106,0.15); color: var(--spring); }
+  :root[data-theme="dark"] .tag-internal { background: rgba(107,122,146,0.15); color: #8899AA; }
+
+  /* ── Color swatches ── */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+
+  .swatch {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .swatch-color { height: 64px; }
+
+  .swatch-info {
+    background: var(--surface);
+    padding: 10px 12px;
+  }
+
+  .swatch-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .swatch-hex {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  .swatch-usage {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* ── Font display ── */
+  .font-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) { .font-pair { grid-template-columns: 1fr; } }
+
+  .font-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+  }
+
+  .font-preview {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .font-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .font-meta strong {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 2px;
+  }
+
+  /* ── Tables ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  thead { background: var(--surface-2); }
+
+  th {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 11px 16px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 11px 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text-mid);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tbody tr { background: var(--surface); }
+  tbody tr:hover { background: var(--surface-2); }
+
+  td.mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  td.label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  td.note { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── Server spec grid ── */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 580px) { .spec-grid { grid-template-columns: 1fr; } }
+
+  .spec-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    border-left: 3px solid var(--green);
+  }
+
+  .spec-card.accent-spring { border-left-color: var(--spring); }
+  .spec-card.accent-info   { border-left-color: var(--info); }
+  .spec-card.accent-mid    { border-left-color: var(--navy-light); }
+
+  .spec-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .spec-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .spec-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+  /* ── App ID cards ── */
+  .app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 560px) { .app-grid { grid-template-columns: 1fr; } }
+
+  .app-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+  }
+
+  .app-platform {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .app-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+
+  .app-row:last-child { border-bottom: none; }
+  .app-key { color: var(--text-muted); font-size: 11.5px; flex-shrink: 0; }
+
+  .app-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text);
+    text-align: right;
+    word-break: break-all;
+  }
+
+  /* ── Notice box ── */
+  .notice {
+    display: flex;
+    gap: 12px;
+    background: rgba(0,135,62,0.07);
+    border: 1px solid rgba(0,135,62,0.22);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+
+  .notice-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    align-items: center;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+
+  /* ── Footer ── */
+  .footer {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 24px 40px 40px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--text-mid);
+  }
+
+  @media (max-width: 520px) {
+    .header { padding: 40px 24px 36px; }
+    .body-wrap { padding: 32px 24px 60px; }
+    .footer { padding: 20px 24px 32px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header class="header">
+  <div class="header-inner">
+    <p class="header-eyebrow">ALMAA NISSI LIMITED · Platform Setup Guide</p>
+    <h1>TSIA<br><span>Platform Requirements</span></h1>
+    <p class="header-sub">
+      Everything needed to provision the TSIA rides platform — domains, brand identity, server infrastructure, and external API credentials.
+    </p>
+    <div class="header-meta">
+      <span class="meta-pill"><span class="dot"></span>Prepared 2026-08-29</span>
+      <span class="meta-pill"><span class="dot"></span>5 repositories</span>
+      <span class="meta-pill"><span class="dot" style="background:#4FD69C"></span>Kenya · KES · EAT</span>
+    </div>
+  </div>
+</header>
+
+<div class="body-wrap">
+
+  <!-- ── 1. DOMAINS ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">01</span>
+      <h2>Domain Names</h2>
+    </div>
+
+    <div class="notice">
+      <span class="notice-icon">⚠</span>
+      <span>The domains below are the target production domains for the TSIA platform. DNS records must be configured to point to the production server before go-live. Any staging/dev environments should use subdomains (e.g. <code style="font-family:'DM Mono',monospace;font-size:12px;">staging.tsiarides.net</code>).</span>
+    </div>
+
+    <div class="domain-card">
+      <div class="domain-left">
+        <div class="domain-icon">🌐</div>
+        <div>
+          <div class="domain-name">tsiarides.net</div>
+          <div class="domain-desc">Primary domain — customer-facing web app, fare estimates, booking, ride tracking</div>
+        </div>
+      </div>
+      <span class="tag tag-needed">Needed</span>
+    </div>
+
+    <div class="domain-card">
+      <div class="domain-left">
+        <div class="domain-icon">🔗</div>
+        <div>
+          <div class="domain-name">tsiaride.com</div>
+          <div class="domain-desc">Secondary domain — redirect to tsiarides.net or use for marketing/landing pages</div>
+        </div>
+      </div>
+      <span class="tag tag-needed">Needed</span>
+    </div>
+
+    <div class="domain-card">
+      <div class="domain-left">
+        <div class="domain-icon">⚙️</div>
+        <div>
+          <div class="domain-name">admin.tsiarides.net</div>
+          <div class="domain-desc">Backend API + admin dashboard — all mobile and web traffic routes here</div>
+        </div>
+      </div>
+      <span class="tag tag-needed">Needed</span>
+    </div>
+
+    <div class="domain-card">
+      <div class="domain-left">
+        <div class="domain-icon">⚡</div>
+        <div>
+          <div class="domain-name">admin.tsiarides.net/ws/connect</div>
+          <div class="domain-desc">Real-time WebSocket gateway — driver GPS, ride matching, live status updates</div>
+        </div>
+      </div>
+      <span class="tag tag-internal">Subpath</span>
+    </div>
+  </section>
+
+  <!-- ── 2. BRAND IDENTITY ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">02</span>
+      <h2>Brand Identity</h2>
+    </div>
+
+    <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:20px; line-height:1.6;">
+      Full brand guide at <a href="https://almaa-nissi-limited.github.io/tsia-docs/brand-guide.html" style="color:var(--green);">almaa-nissi-limited.github.io/tsia-docs/brand-guide.html</a>. These are the canonical colour and typography values applied across all TSIA apps and web surfaces.
+    </p>
+
+    <div class="color-grid" style="margin-bottom:20px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#00873E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Primary Green</div>
+          <div class="swatch-hex">#00873E</div>
+          <div class="swatch-usage">Primary · CTA · Buttons</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2FD36A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Spring Green</div>
+          <div class="swatch-hex">#2FD36A</div>
+          <div class="swatch-usage">Highlights · Polyline · Accents</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0E1B2A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brand Navy</div>
+          <div class="swatch-hex">#0E1B2A</div>
+          <div class="swatch-usage">Primary text · Headers</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F2F2F5;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Page Ground</div>
+          <div class="swatch-hex">#F2F2F5</div>
+          <div class="swatch-usage">Light mode background</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0A1219;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Night Ground</div>
+          <div class="swatch-hex">#0A1219</div>
+          <div class="swatch-usage">Dark mode background</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#131F2E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Dark Card</div>
+          <div class="swatch-hex">#131F2E</div>
+          <div class="swatch-usage">Dark mode card/surface</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4FD69C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Success</div>
+          <div class="swatch-hex">#4FD69C</div>
+          <div class="swatch-usage">Confirmations</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FC7C5F;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Warning</div>
+          <div class="swatch-hex">#FC7C5F</div>
+          <div class="swatch-usage">Cautions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="font-pair">
+      <div class="font-card">
+        <div class="font-preview" style="font-family:'DM Sans',sans-serif;">
+          TSIA
+        </div>
+        <div class="font-meta">
+          <strong>Display &amp; UI</strong>
+          DM Sans · Weights 400 / 500 / 700 · Google Fonts
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-preview" style="font-family:'DM Mono',monospace; font-size:22px; font-weight:400;">
+          12,450 KES
+        </div>
+        <div class="font-meta">
+          <strong>Data &amp; Code</strong>
+          DM Mono · Weight 400 · Fares, distances, IDs, env vars
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3. SERVER INFRASTRUCTURE ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">03</span>
+      <h2>Server Infrastructure</h2>
+    </div>
+
+    <div class="spec-grid" style="margin-bottom:16px;">
+      <div class="spec-card">
+        <div class="spec-title">Production Server</div>
+        <div class="spec-val">34.173.51.226</div>
+        <div class="spec-sub">Apache :8080 behind Nginx :443<br>User: www-data (never root)</div>
+      </div>
+      <div class="spec-card accent-spring">
+        <div class="spec-title">Dev / VPN Server</div>
+        <div class="spec-val">100.75.69.2</div>
+        <div class="spec-sub">Tailscale private network<br>Requires VPN invite to reach</div>
+      </div>
+      <div class="spec-card accent-mid">
+        <div class="spec-title">Admin Dashboard URL</div>
+        <div class="spec-val">admin.tsiarides.net</div>
+        <div class="spec-sub">HTTPS via Nginx reverse proxy</div>
+      </div>
+      <div class="spec-card accent-mid">
+        <div class="spec-title">API Base URL</div>
+        <div class="spec-val">admin.tsiarides.net/api</div>
+        <div class="spec-sub">Sanctum bearer auth · 60 req/min throttle</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Required Version</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">PHP</td>
+            <td class="mono">8.3+ (prod: 8.4)</td>
+            <td class="note">Laravel 13 — run as www-data, never root</td>
+          </tr>
+          <tr>
+            <td class="label">MySQL</td>
+            <td class="mono">8.0</td>
+            <td class="note">Spatial extensions required for surge zone polygons</td>
+          </tr>
+          <tr>
+            <td class="label">Redis</td>
+            <td class="mono">7</td>
+            <td class="note">DB 2 is shared between Laravel and the Node gateway — no other workload on DB 2</td>
+          </tr>
+          <tr>
+            <td class="label">Node.js</td>
+            <td class="mono">20+</td>
+            <td class="note">Real-time WebSocket gateway only; managed by PM2</td>
+          </tr>
+          <tr>
+            <td class="label">Composer</td>
+            <td class="mono">2</td>
+            <td class="note">PHP dependency manager</td>
+          </tr>
+          <tr>
+            <td class="label">Supervisor</td>
+            <td class="mono">any</td>
+            <td class="note">2× worker processes for Laravel queues (Redis driver in prod)</td>
+          </tr>
+          <tr>
+            <td class="label">PM2</td>
+            <td class="mono">any</td>
+            <td class="note">Single-instance Node gateway · 512 MB ceiling</td>
+          </tr>
+          <tr>
+            <td class="label">Flutter SDK</td>
+            <td class="mono">3.41.2 (driver) / 3.38.5 (rider)</td>
+            <td class="note">Pinned via FVM; Dart ^3.6.0. Android NDK 27.0.12077973</td>
+          </tr>
+          <tr>
+            <td class="label">Android</td>
+            <td class="mono">minSdk 26 · targetSdk 36</td>
+            <td class="note">arm64-v8a only for release builds; 16KB page compliance</td>
+          </tr>
+          <tr>
+            <td class="label">iOS</td>
+            <td class="mono">Xcode Cloud CI</td>
+            <td class="note">VoIP (CallKit) + Live Activities; ci_scripts/ for pre/post build hooks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── 4. API KEYS ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">04</span>
+      <h2>External API Keys &amp; Services</h2>
+    </div>
+
+    <div class="notice">
+      <span class="notice-icon">🔐</span>
+      <span>All keys must be provided securely — never committed to version control. Production keys go into server environment variables or the .env file. Mobile keys are injected at build time via <code style="font-family:'DM Mono',monospace;font-size:12px;">--dart-define</code>. Keys marked <strong>Client to provide</strong> require the client to create accounts and generate credentials.</span>
+    </div>
+
+    <div class="legend">
+      <span class="legend-item"><span class="tag tag-live">Exists</span> Active key already in use</span>
+      <span class="legend-item"><span class="tag tag-needed">Client</span> Client must create account &amp; provide key</span>
+      <span class="legend-item"><span class="tag tag-internal">Internal</span> Generated internally, no external account needed</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Environment Variable(s)</th>
+            <th>Used For</th>
+            <th style="text-align:center;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Google Maps Platform</td>
+            <td class="mono">GOOGLE_MAP_KEY<br>GOOGLE_MAP_API_KEY</td>
+            <td class="note">Route distance/duration (backend), maps rendering, places autocomplete proxy (web &amp; mobile). Must be restricted to TSIA bundle IDs.</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">Safaricom M-Pesa (Daraja)</td>
+            <td class="mono">MPESA_BASE_URL<br>MPESA_APP_ID<br>MPESA_CALLBACK_URL<br>MPESA_CALLBACK_SECRET</td>
+            <td class="note">STK push (rider payments) + B2C payouts (driver earnings). Requires Daraja developer account &amp; approved Paybill/Till</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">Firebase (Google)</td>
+            <td class="mono">FIREBASE_SERVER_KEY<br>FIREBASE_CREDENTIALS<br>FIREBASE_* (10 mobile keys)</td>
+            <td class="note">FCM data-only push (critical for driver ringtone when app killed), Firestore (chat, ride data, signaling), Auth, Crashlytics. Must create a new TSIA Firebase project — register apps with TSIA bundle IDs.</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">OneSignal — Rider</td>
+            <td class="mono">ONESIGNAL_APP_ID_RIDER<br>ONESIGNAL_REST_API_KEY</td>
+            <td class="note">Visible push notifications for riders (promotional, status updates)</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">OneSignal — Driver</td>
+            <td class="mono">ONESIGNAL_APP_ID_DRIVER<br>ONESIGNAL_DRIVER_REST_API_KEY</td>
+            <td class="note">Separate OneSignal app for driver push notifications</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">Africa's Talking</td>
+            <td class="mono">AFRICAS_TALKING_KEY<br>AFRICAS_TALKING_USERNAME<br>SMS_PROVIDER=africastalking</td>
+            <td class="note">Primary SMS gateway for OTP delivery (Kenyan numbers). Fallback providers: Twilio, Infobip</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">OpenWeatherMap</td>
+            <td class="mono">OPENWEATHERMAP_API_KEY</td>
+            <td class="note">Weather data for surge pricing — rain/storm conditions affect multipliers, polled every 15 minutes</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">Paystack</td>
+            <td class="mono"><em>Stored in DB — not .env</em></td>
+            <td class="note">Card payments + saved cards. Test/live toggle managed in admin dashboard under Payment Gateways</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">MQTT Broker</td>
+            <td class="mono">MQTT_HOST<br>MQTT_PORT<br>MQTT_UNIQUE_TOPIC_NAME</td>
+            <td class="note">Real-time updates to mobile clients — requires a running MQTT broker (e.g. Mosquitto, HiveMQ)</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">M-Pesa Wrapper Service</td>
+            <td class="mono">MPESA_APP_ID (mobile)</td>
+            <td class="note">Flutter apps use an M-Pesa proxy service for STK push from mobile — token cached 30 min</td>
+            <td style="text-align:center;"><span class="tag tag-needed">Client</span></td>
+          </tr>
+          <tr>
+            <td class="label">Internal API Key</td>
+            <td class="mono">INTERNAL_API_KEY</td>
+            <td class="note">Shared secret between Laravel and the Node.js real-time gateway. Must match exactly on both services</td>
+            <td style="text-align:center;"><span class="tag tag-internal">Internal</span></td>
+          </tr>
+          <tr>
+            <td class="label">Sanctum / JWT</td>
+            <td class="mono">SANCTUM_EXPIRATION<br>APP_KEY</td>
+            <td class="note">Laravel Sanctum token lifetime + app encryption key (generated with <code style="font-family:'DM Mono',monospace;font-size:11.5px;">php artisan key:generate</code>)</td>
+            <td style="text-align:center;"><span class="tag tag-internal">Internal</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── 5. MOBILE APP IDENTIFIERS ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">05</span>
+      <h2>Mobile App Identifiers</h2>
+    </div>
+
+    <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:16px; line-height:1.6;">
+      Both apps will be published under TSIA branding. The client must have access to the Apple Developer account and Google Play Console to register the new bundle IDs and manage releases.
+    </p>
+
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="app-platform">
+          <span>🚗</span> Rider App
+        </div>
+        <div class="app-row">
+          <span class="app-key">Android package</span>
+          <span class="app-val">com.tsia.riderapp</span>
+        </div>
+        <div class="app-row">
+          <span class="app-key">iOS bundle</span>
+          <span class="app-val">com.tsia.rider</span>
+        </div>
+        <div class="app-row">
+          <span class="app-key">Display name</span>
+          <span class="app-val">TSIA</span>
+        </div>
+        <div class="app-row">
+          <span class="app-key">Version</span>
+          <span class="app-val">48.0.0+48</span>
+        </div>
+        <div class="app-row">
+          <span class="app-key">Flutter</span>
+          <span class="app-val">3.38.5 (FVM)</span>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-platform">
+          <span>🏎️</span> Driver App
+        </div>
+        <div class="app-row">
+          <span class="app-key">Android package</span>
+          <span class="app-val">com.tsia.driverapp</span>
+        </div>
+        <div class="app-row">
+          <span class="app-key">iOS bundle</span>
+          <span class="app-val">com.tsia.driverapp</span>
+        </div>
+        <div class="app-row">
+          <span class="app-key">Display name</span>
+          <span class="app-val">TSIA Driver</span>
+        </div>
+        <div class="app-row">
+          <span class="app-key">Version</span>
+          <span class="app-val">48.0.0+48</span>
+        </div>
+        <div class="app-row">
+          <span class="app-key">Flutter</span>
+          <span class="app-val">3.41.2 (FVM)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 6. AUTHENTICATION METHODS ── -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-label">06</span>
+      <h2>Authentication Methods</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Surface</th>
+            <th>Method</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Rider &amp; Driver (mobile)</td>
+            <td class="mono">OTP (phone)</td>
+            <td class="note">6-digit code via SMS (Africa's Talking). 5-min expiry, 5 attempts max, 30s resend cooldown. Social login (Google, Apple) also supported</td>
+          </tr>
+          <tr>
+            <td class="label">Admin dashboard</td>
+            <td class="mono">Email + password</td>
+            <td class="note">Laravel Breeze session auth + optional Google Authenticator 2FA with recovery codes. Session times out after 30 min idle</td>
+          </tr>
+          <tr>
+            <td class="label">Node gateway (internal)</td>
+            <td class="mono">X-Internal-Key header</td>
+            <td class="note">Shared secret (INTERNAL_API_KEY) — never exposed to clients</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div>
+    <span class="footer-brand">ALMAA NISSI LIMITED</span><br>
+    TSIA Platform — Client Requirements Specification
+  </div>
+  <div style="text-align:right;">
+    Prepared 2026-08-29<br>
+    Confidential · Not for distribution
+  </div>
+</footer>
+
+</body>
+</html>
