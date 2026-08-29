@@ -742,24 +742,24 @@
 
     <div class="spec-grid" style="margin-bottom:16px;">
       <div class="spec-card">
-        <div class="spec-title">Production Server</div>
-        <div class="spec-val">34.173.51.226</div>
-        <div class="spec-sub">Apache :8080 behind Nginx :443<br>User: www-data (never root)</div>
-      </div>
-      <div class="spec-card accent-spring">
-        <div class="spec-title">Dev / VPN Server</div>
-        <div class="spec-val">100.75.69.2</div>
-        <div class="spec-sub">Tailscale private network<br>Requires VPN invite to reach</div>
-      </div>
-      <div class="spec-card accent-mid">
         <div class="spec-title">Admin Dashboard URL</div>
         <div class="spec-val">admin.tsiarides.net</div>
-        <div class="spec-sub">HTTPS via Nginx reverse proxy</div>
+        <div class="spec-sub">HTTPS · reverse proxy to application server</div>
       </div>
       <div class="spec-card accent-mid">
         <div class="spec-title">API Base URL</div>
         <div class="spec-val">admin.tsiarides.net/api</div>
         <div class="spec-sub">Sanctum bearer auth · 60 req/min throttle</div>
+      </div>
+      <div class="spec-card accent-spring">
+        <div class="spec-title">WebSocket Endpoint</div>
+        <div class="spec-val">admin.tsiarides.net/ws/connect</div>
+        <div class="spec-sub">Real-time gateway — GPS, ride matching, status</div>
+      </div>
+      <div class="spec-card accent-info">
+        <div class="spec-title">Dev / Staging</div>
+        <div class="spec-val">staging.tsiarides.net</div>
+        <div class="spec-sub">VPN-protected · contact dev team for access</div>
       </div>
     </div>
 
@@ -775,23 +775,23 @@
         <tbody>
           <tr>
             <td class="label">PHP</td>
-            <td class="mono">8.3+ (prod: 8.4)</td>
-            <td class="note">Laravel 13 — run as www-data, never root</td>
+            <td class="mono">8.3+</td>
+            <td class="note">Laravel 13 backend</td>
           </tr>
           <tr>
             <td class="label">MySQL</td>
-            <td class="mono">8.0</td>
+            <td class="mono">8.0+</td>
             <td class="note">Spatial extensions required for surge zone polygons</td>
           </tr>
           <tr>
             <td class="label">Redis</td>
-            <td class="mono">7</td>
-            <td class="note">DB 2 is shared between Laravel and the Node gateway — no other workload on DB 2</td>
+            <td class="mono">6+</td>
+            <td class="note">Shared between Laravel queue driver and the real-time gateway</td>
           </tr>
           <tr>
             <td class="label">Node.js</td>
-            <td class="mono">20+</td>
-            <td class="note">Real-time WebSocket gateway only; managed by PM2</td>
+            <td class="mono">18+</td>
+            <td class="note">Real-time WebSocket gateway; managed by PM2</td>
           </tr>
           <tr>
             <td class="label">Composer</td>
@@ -801,27 +801,27 @@
           <tr>
             <td class="label">Supervisor</td>
             <td class="mono">any</td>
-            <td class="note">2× worker processes for Laravel queues (Redis driver in prod)</td>
+            <td class="note">2× worker processes for Laravel queues</td>
           </tr>
           <tr>
             <td class="label">PM2</td>
             <td class="mono">any</td>
-            <td class="note">Single-instance Node gateway · 512 MB ceiling</td>
+            <td class="note">Process manager for the Node.js real-time gateway</td>
           </tr>
           <tr>
             <td class="label">Flutter SDK</td>
-            <td class="mono">3.41.2 (driver) / 3.38.5 (rider)</td>
-            <td class="note">Pinned via FVM; Dart ^3.6.0. Android NDK 27.0.12077973</td>
+            <td class="mono">3.x (FVM-pinned)</td>
+            <td class="note">Dart 3.x; exact versions pinned per-app via FVM</td>
           </tr>
           <tr>
             <td class="label">Android</td>
-            <td class="mono">minSdk 26 · targetSdk 36</td>
-            <td class="note">arm64-v8a only for release builds; 16KB page compliance</td>
+            <td class="mono">minSdk 26+</td>
+            <td class="note">arm64-v8a release builds; 16KB page alignment required</td>
           </tr>
           <tr>
             <td class="label">iOS</td>
             <td class="mono">Xcode Cloud CI</td>
-            <td class="note">VoIP (CallKit) + Live Activities; ci_scripts/ for pre/post build hooks</td>
+            <td class="note">VoIP (CallKit) + Live Activities entitlements required</td>
           </tr>
         </tbody>
       </table>
