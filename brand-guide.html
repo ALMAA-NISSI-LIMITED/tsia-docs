@@ -755,6 +755,39 @@
 
   <div class="divider"></div>
 
+  <!-- Auth screens -->
+  <section class="section">
+    <p class="section-label">Mobile · Auth</p>
+    <h2 class="section-title">Auth screen designs</h2>
+    <p class="section-desc">Reference screens for the sign-in flow. White-dominant, Poppins, TSIA green accent. Two entry points: phone number (OTP via WhatsApp) and Google Sign-In.</p>
+    <div style="display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1.25rem;">
+      <div style="flex:1;min-width:180px;max-width:240px;">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
+          <img src="auth-screen-1.png" alt="Auth — phone + Google sign-in" style="width:100%;display:block;">
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Phone entry · Google Sign-In option · T&amp;C footer</div>
+      </div>
+      <div style="flex:1;min-width:180px;max-width:240px;">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
+          <img src="auth-screen-2.jpg" alt="Auth — WhatsApp OTP" style="width:100%;display:block;">
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">WhatsApp OTP · +254 country selector · green Continue pill</div>
+      </div>
+    </div>
+    <div style="margin-top:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:.75rem;">Design notes</div>
+      <ul style="font-size:13px;color:var(--text-2);line-height:1.8;padding-left:1.25rem;">
+        <li>Phone input uses Kenya (+254) as default country — flag + code in a pill selector</li>
+        <li>WhatsApp OTP preferred over SMS — green WhatsApp icon, "Learn more" link in accent green</li>
+        <li>Google Sign-In button: white background, 1.5px border, Google logo left-aligned, pill shape (radius 9999px)</li>
+        <li>Continue button: full-width, TSIA green (#2E8B4A), white text, pill shape, min-height 56px</li>
+        <li>T&amp;C footer: 12px, muted text, links in accent green</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- Motion -->
   <section class="section">
     <p class="section-label">Motion</p>
