@@ -543,8 +543,8 @@
   <!-- Typography -->
   <section class="section">
     <p class="section-label">Typography</p>
-    <h2 class="section-title">DM Sans — the one typeface</h2>
-    <p class="section-desc">The brand uses DM Sans exclusively across admin, mobile, and developer docs. Weight and size provide all hierarchy. DM Mono is used for tokens, codes, and data values only.</p>
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">Two typefaces by platform. <strong>DM Sans</strong> for web admin and developer docs. <strong>Poppins</strong> for Flutter mobile apps (Rider &amp; Driver). DM Mono for tokens, IDs, amounts, and timestamps on all platforms.</p>
     <div class="type-grid">
       <div class="type-row">
         <span class="type-specimen" style="font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;">Dashboard</span>
@@ -612,23 +612,23 @@
   <section class="section">
     <p class="section-label">Logo</p>
     <h2 class="section-title">Logo usage</h2>
-    <p class="section-desc">The logo file lives at <code>public/images/logo.png</code> (light) and <code>public/images/dark_logo.png</code>. Use the version that contrasts with its background.</p>
+    <p class="section-desc">The master logo file is <code>image.png</code> in this repo. Use a white-filtered version on dark or colored backgrounds.</p>
     <div class="logo-grid">
       <div class="logo-card">
         <div class="logo-bg" style="background:#F2F2F5;">
-          <img src="../public/images/logo.png" alt="TSIA logo on light">
+          <img src="image.png" alt="TSIA logo on light">
         </div>
         <div class="logo-caption">On light background</div>
       </div>
       <div class="logo-card">
         <div class="logo-bg" style="background:#0E1B2A;">
-          <img src="../public/images/logo.png" alt="TSIA logo on navy" style="filter: brightness(0) invert(1);">
+          <img src="image.png" alt="TSIA logo on navy" style="filter: brightness(0) invert(1);">
         </div>
         <div class="logo-caption">On brand navy — invert to white</div>
       </div>
       <div class="logo-card">
         <div class="logo-bg" style="background:#00873E;">
-          <img src="../public/images/logo.png" alt="TSIA logo on green" style="filter: brightness(0) invert(1);">
+          <img src="image.png" alt="TSIA logo on green" style="filter: brightness(0) invert(1);">
         </div>
         <div class="logo-caption">On green accent — white only</div>
       </div>
@@ -661,6 +661,95 @@
           <li>Combine with the SafiRides wordmark — they are distinct brands</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Icon system -->
+  <section class="section">
+    <p class="section-label">Icons</p>
+    <h2 class="section-title">Icon system</h2>
+    <p class="section-desc">Two icon sets by platform. Never mix sets within a single screen.</p>
+    <table class="token-table">
+      <thead><tr><th>Platform</th><th>Library</th><th>Style</th><th>Size</th></tr></thead>
+      <tbody>
+        <tr><td>Flutter mobile</td><td>Material Symbols (Outlined)</td><td>Outlined, weight 400</td><td>24px default · 20px compact</td></tr>
+        <tr><td>Web admin (React)</td><td>Lucide React</td><td>Stroke 1.5px</td><td>16px inline · 20px standalone</td></tr>
+        <tr><td>Laravel Blade</td><td>Remix Icon (via CDN)</td><td>Line variant</td><td>16–20px</td></tr>
+      </tbody>
+    </table>
+    <p class="section-desc" style="margin-top:1rem">Icon color always inherits from text or uses the accent green for interactive states. Never use icons as standalone decoration — pair with a label or tooltip.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Component examples -->
+  <section class="section">
+    <p class="section-label">Components</p>
+    <h2 class="section-title">Core component patterns</h2>
+    <p class="section-desc">Visual reference for buttons, badges, cards, and inputs. Apply these patterns consistently before reaching for custom styles.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:1.25rem;">
+
+      <!-- Buttons -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:1rem;">Buttons</div>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;">
+          <button style="background:#00873E;color:#fff;border:none;border-radius:12px;padding:0 20px;height:48px;font-family:inherit;font-weight:600;font-size:14px;cursor:default;">Primary</button>
+          <button style="background:transparent;color:#00873E;border:1.5px solid #00873E;border-radius:12px;padding:0 20px;height:48px;font-family:inherit;font-weight:600;font-size:14px;cursor:default;">Outline</button>
+          <button style="background:var(--mono-bg);color:var(--text-2);border:none;border-radius:12px;padding:0 20px;height:48px;font-family:inherit;font-weight:600;font-size:14px;cursor:default;">Ghost</button>
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;">Min height 48px · radius 12px · font-weight 600</div>
+      </div>
+
+      <!-- Badges -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:1rem;">Status Badges</div>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;">
+          <span style="background:rgba(79,214,156,.15);color:#1a7a55;border-radius:9999px;padding:3px 10px;font-size:12px;font-weight:600;">Active</span>
+          <span style="background:rgba(252,124,95,.15);color:#c0450a;border-radius:9999px;padding:3px 10px;font-size:12px;font-weight:600;">Pending</span>
+          <span style="background:rgba(245,54,92,.15);color:#c0143c;border-radius:9999px;padding:3px 10px;font-size:12px;font-weight:600;">Blocked</span>
+          <span style="background:rgba(55,213,242,.15);color:#0a7a91;border-radius:9999px;padding:3px 10px;font-size:12px;font-weight:600;">Info</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;">Pill shape · 15% opacity bg · matching text · never brand green</div>
+      </div>
+
+      <!-- Card -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:1rem;">Card</div>
+        <div style="background:var(--page);border-radius:12px;padding:1rem;">
+          <div style="font-size:13px;font-weight:600;color:var(--text-2);margin-bottom:.25rem;">KES 1,240</div>
+          <div style="font-size:16px;font-weight:700;">Ride #7f3a9c</div>
+          <div style="font-size:13px;color:var(--text-3);margin-top:.25rem;">14:32 EAT · 8.4 km</div>
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;">radius 12px · shadow-sm · white surface on grey ground</div>
+      </div>
+
+      <!-- Input -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:1rem;">Input</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <input placeholder="Search drivers…" style="height:48px;border-radius:12px;border:1.5px solid var(--border);background:var(--page);padding:0 14px;font-family:inherit;font-size:14px;color:var(--text-1);outline:none;" readonly>
+          <input placeholder="Focus state" style="height:48px;border-radius:12px;border:1.5px solid #00873E;background:var(--card);padding:0 14px;font-family:inherit;font-size:14px;color:var(--text-1);outline:none;" readonly>
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;">Height 48px · radius 12px · focus border #00873E</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Splash screen reference -->
+  <section class="section">
+    <p class="section-label">Mobile · Splash</p>
+    <h2 class="section-title">App splash screen</h2>
+    <p class="section-desc">The approved splash design for the TSIA Rider app. White-dominant, logo centered top, illustrated car + cityscape fading into green tones at bottom. Use as the reference for <code>flutter_native_splash</code> configuration.</p>
+    <div style="margin-top:1.25rem;max-width:240px;">
+      <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
+        <img src="https://raw.githubusercontent.com/ALMAA-NISSI-LIMITED/TSIA_Rider_Frontend/main/design/tsia-splash.png" alt="TSIA splash screen" style="width:100%;display:block;">
+      </div>
+      <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Rider app splash · white bg · Poppins · #1B2A4A navy + #2E8B4A green</div>
     </div>
   </section>
 
