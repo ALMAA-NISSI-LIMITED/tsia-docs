@@ -296,6 +296,98 @@
   .rule-card.do li::before   { content: '·'; position: absolute; left: 4px; color: var(--green); font-weight: 700; }
   .rule-card.dont li::before { content: '·'; position: absolute; left: 4px; color: #EA4335; font-weight: 700; }
 
+  /* ── Icon pack gallery ── */
+  .icon-platform-heading {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin: 32px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .icon-platform-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .icon-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+  }
+  .icon-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 12px 12px;
+    box-shadow: var(--card-shadow);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    cursor: default;
+  }
+  .icon-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(14,27,42,.12);
+  }
+  .icon-tile img {
+    display: block;
+    object-fit: contain;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .icon-tile-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-3);
+    text-align: center;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+  .icon-tile-sub {
+    font-size: 10px;
+    color: var(--text-3);
+    opacity: 0.7;
+    text-align: center;
+  }
+  .icon-tile.dark-bg { background: #0E1B2A; border-color: rgba(255,255,255,.10); }
+  .icon-tile.dark-bg .icon-tile-label,
+  .icon-tile.dark-bg .icon-tile-sub { color: rgba(238,242,247,.55); }
+  /* Social OG images — wider tiles */
+  .icon-tile.og { padding: 12px; }
+  .icon-tile.og img { border-radius: 8px; width: 200px; height: auto; }
+  @media (max-width: 540px) {
+    .icon-tile.og img { width: 100%; }
+    .icon-tile.og { width: 100%; }
+  }
+  /* favicon row — tiny chips inline */
+  .favicon-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: var(--card-shadow);
+  }
+  .fav-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .fav-chip img { display: block; image-rendering: pixelated; border-radius: 3px; }
+  .fav-chip span { font-size: 10px; color: var(--text-3); font-weight: 600; }
+
   /* ── Motion tokens ── */
   .motion-demo { display: flex; gap: 16px; flex-wrap: wrap; }
   .motion-pill { background: var(--card); border-radius: 10px; padding: 16px 20px; box-shadow: var(--card-shadow); flex: 1; min-width: 140px; }
@@ -606,34 +698,7 @@
     </div>
   </section>
 
-  <div class="divider"></div>
 
-  <!-- Logo -->
-  <section class="section">
-    <p class="section-label">Logo</p>
-    <h2 class="section-title">Logo usage</h2>
-    <p class="section-desc">The master logo file is <code>image.png</code> in this repo. Use a white-filtered version on dark or colored backgrounds.</p>
-    <div class="logo-grid">
-      <div class="logo-card">
-        <div class="logo-bg" style="background:#F2F2F5;">
-          <img src="image.png" alt="TSIA logo on light">
-        </div>
-        <div class="logo-caption">On light background</div>
-      </div>
-      <div class="logo-card">
-        <div class="logo-bg" style="background:#0E1B2A;">
-          <img src="image.png" alt="TSIA logo on navy" style="filter: brightness(0) invert(1);">
-        </div>
-        <div class="logo-caption">On brand navy — invert to white</div>
-      </div>
-      <div class="logo-card">
-        <div class="logo-bg" style="background:#00873E;">
-          <img src="image.png" alt="TSIA logo on green" style="filter: brightness(0) invert(1);">
-        </div>
-        <div class="logo-caption">On green accent — white only</div>
-      </div>
-    </div>
-  </section>
 
   <!-- Usage rules -->
   <section class="section">
@@ -671,15 +736,168 @@
     <p class="section-label">Icons</p>
     <h2 class="section-title">Icon system</h2>
     <p class="section-desc">Two icon sets by platform. Never mix sets within a single screen.</p>
-    <table class="token-table">
-      <thead><tr><th>Platform</th><th>Library</th><th>Style</th><th>Size</th></tr></thead>
-      <tbody>
-        <tr><td>Flutter mobile</td><td>Material Symbols (Outlined)</td><td>Outlined, weight 400</td><td>24px default · 20px compact</td></tr>
-        <tr><td>Web admin (React)</td><td>Lucide React</td><td>Stroke 1.5px</td><td>16px inline · 20px standalone</td></tr>
-        <tr><td>Laravel Blade</td><td>Remix Icon (via CDN)</td><td>Line variant</td><td>16–20px</td></tr>
-      </tbody>
-    </table>
+    <div class="token-wrap">
+      <table class="token-table">
+        <thead><tr><th>Platform</th><th>Library</th><th>Style</th><th>Size</th></tr></thead>
+        <tbody>
+          <tr><td>Flutter mobile</td><td>Material Symbols (Outlined)</td><td>Outlined, weight 400</td><td>24px default · 20px compact</td></tr>
+          <tr><td>Web admin (React)</td><td>Lucide React</td><td>Stroke 1.5px</td><td>16px inline · 20px standalone</td></tr>
+          <tr><td>Laravel Blade</td><td>Remix Icon (via CDN)</td><td>Line variant</td><td>16–20px</td></tr>
+        </tbody>
+      </table>
+    </div>
     <p class="section-desc" style="margin-top:1rem">Icon color always inherits from text or uses the accent green for interactive states. Never use icons as standalone decoration — pair with a label or tooltip.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- App icon pack -->
+  <section class="section">
+    <p class="section-label">Icons · App Pack</p>
+    <h2 class="section-title">App icon pack</h2>
+    <p class="section-desc">Every icon uses the full TSIA lockup — wordmark, pin, and road — on a white ground. Below 48 px the lockup renders in solid navy so the silhouette stays legible. Never use the standalone A symbol; it is retired.</p>
+
+    <!-- iOS -->
+    <p class="icon-platform-heading">iOS · AppIcon</p>
+    <div class="icon-gallery">
+      <div class="icon-tile">
+        <img src="icons/ios/AppIcon-1024.png" alt="iOS App Icon — light" style="width:96px;height:96px;border-radius:20px;">
+        <span class="icon-tile-label">Light</span>
+        <span class="icon-tile-sub">1024 × 1024</span>
+      </div>
+      <div class="icon-tile dark-bg">
+        <img src="icons/ios/AppIcon-1024-dark.png" alt="iOS App Icon — dark" style="width:96px;height:96px;border-radius:20px;">
+        <span class="icon-tile-label">Dark (iOS 18)</span>
+        <span class="icon-tile-sub">1024 × 1024</span>
+      </div>
+      <div class="icon-tile dark-bg">
+        <img src="icons/ios/AppIcon-1024-tinted.png" alt="iOS App Icon — tinted" style="width:96px;height:96px;border-radius:20px;">
+        <span class="icon-tile-label">Tinted (iOS 18)</span>
+        <span class="icon-tile-sub">1024 × 1024</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/ios/AppIcon-180.png" alt="iOS App Icon 180" style="width:60px;height:60px;border-radius:13px;">
+        <span class="icon-tile-label">@3× Home</span>
+        <span class="icon-tile-sub">180 × 180</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/ios/AppIcon-120.png" alt="iOS App Icon 120" style="width:40px;height:40px;border-radius:9px;">
+        <span class="icon-tile-label">@3× Spotlight</span>
+        <span class="icon-tile-sub">120 × 120</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/ios/AppIcon-87.png" alt="iOS App Icon 87" style="width:29px;height:29px;border-radius:7px;">
+        <span class="icon-tile-label">Settings @3×</span>
+        <span class="icon-tile-sub">87 × 87</span>
+      </div>
+    </div>
+
+    <!-- Android -->
+    <p class="icon-platform-heading">Android · Launcher</p>
+    <div class="icon-gallery">
+      <div class="icon-tile">
+        <img src="icons/android/mipmap-xxxhdpi/ic_launcher.png" alt="Android launcher" style="width:96px;height:96px;border-radius:20px;">
+        <span class="icon-tile-label">Legacy square</span>
+        <span class="icon-tile-sub">192 × 192 (xxxhdpi)</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/android/mipmap-xxxhdpi/ic_launcher_round.png" alt="Android launcher round" style="width:96px;height:96px;border-radius:50%;">
+        <span class="icon-tile-label">Round</span>
+        <span class="icon-tile-sub">192 × 192 (xxxhdpi)</span>
+      </div>
+      <div class="icon-tile" style="background:#F2F2F5;">
+        <img src="icons/android/adaptive/ic_launcher_foreground.png" alt="Adaptive foreground" style="width:96px;height:96px;border-radius:4px;">
+        <span class="icon-tile-label">Adaptive FG</span>
+        <span class="icon-tile-sub">432 × 432</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/android/adaptive/ic_launcher_background.png" alt="Adaptive background" style="width:96px;height:96px;border-radius:4px;">
+        <span class="icon-tile-label">Adaptive BG</span>
+        <span class="icon-tile-sub">432 × 432</span>
+      </div>
+      <div class="icon-tile dark-bg">
+        <img src="icons/android/adaptive/ic_launcher_monochrome.png" alt="Adaptive monochrome" style="width:96px;height:96px;border-radius:4px;filter:brightness(0) invert(1);">
+        <span class="icon-tile-label">Monochrome</span>
+        <span class="icon-tile-sub">Themed Icons (Android 13+)</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/android/play-store-512.png" alt="Play Store icon" style="width:80px;height:80px;border-radius:16px;">
+        <span class="icon-tile-label">Play Store</span>
+        <span class="icon-tile-sub">512 × 512</span>
+      </div>
+    </div>
+
+    <!-- Web favicons -->
+    <p class="icon-platform-heading">Web · Favicons &amp; PWA</p>
+    <div class="favicon-row">
+      <div class="fav-chip"><img src="icons/web/favicon-512.png" alt="512" style="width:64px;height:64px;"><span>512</span></div>
+      <div class="fav-chip"><img src="icons/web/favicon-256.png" alt="256" style="width:48px;height:48px;"><span>256</span></div>
+      <div class="fav-chip"><img src="icons/web/favicon-192.png" alt="192" style="width:36px;height:36px;"><span>192</span></div>
+      <div class="fav-chip"><img src="icons/web/favicon-128.png" alt="128" style="width:28px;height:28px;"><span>128</span></div>
+      <div class="fav-chip"><img src="icons/web/favicon-96.png"  alt="96"  style="width:24px;height:24px;"><span>96</span></div>
+      <div class="fav-chip"><img src="icons/web/favicon-64.png"  alt="64"  style="width:20px;height:20px;"><span>64</span></div>
+      <div class="fav-chip"><img src="icons/web/favicon-48.png"  alt="48"  style="width:16px;height:16px;"><span>48</span></div>
+      <div class="fav-chip"><img src="icons/web/favicon-32.png"  alt="32"  style="width:12px;height:12px;"><span>32</span></div>
+      <div class="fav-chip"><img src="icons/web/favicon-16.png"  alt="16"  style="width:8px;height:8px;"><span>16</span></div>
+    </div>
+    <div class="icon-gallery" style="margin-top:12px;">
+      <div class="icon-tile">
+        <img src="icons/web/apple-touch-icon.png" alt="Apple touch icon" style="width:76px;height:76px;border-radius:17px;">
+        <span class="icon-tile-label">Apple Touch Icon</span>
+        <span class="icon-tile-sub">180 × 180</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/web/icon-512.png" alt="PWA icon" style="width:76px;height:76px;border-radius:17px;">
+        <span class="icon-tile-label">PWA Icon</span>
+        <span class="icon-tile-sub">512 × 512</span>
+      </div>
+      <div class="icon-tile dark-bg">
+        <img src="icons/web/icon-512-dark.png" alt="PWA icon dark" style="width:76px;height:76px;border-radius:17px;">
+        <span class="icon-tile-label">PWA Icon Dark</span>
+        <span class="icon-tile-sub">512 × 512</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/web/maskable-512.png" alt="Maskable icon" style="width:76px;height:76px;border-radius:50%;">
+        <span class="icon-tile-label">Maskable</span>
+        <span class="icon-tile-sub">512 × 512 · safe zone</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/web/mstile-150.png" alt="Windows tile 150" style="width:76px;height:76px;border-radius:8px;">
+        <span class="icon-tile-label">MS Tile</span>
+        <span class="icon-tile-sub">150 × 150</span>
+      </div>
+    </div>
+
+    <!-- Social -->
+    <p class="icon-platform-heading">Social · OG &amp; Avatars</p>
+    <div class="icon-gallery">
+      <div class="icon-tile og">
+        <img src="icons/social/og-image-1200x630.png" alt="OG image light">
+        <span class="icon-tile-label">OG Image — Light</span>
+        <span class="icon-tile-sub">1200 × 630</span>
+      </div>
+      <div class="icon-tile og dark-bg">
+        <img src="icons/social/og-image-1200x630-navy.png" alt="OG image navy">
+        <span class="icon-tile-label">OG Image — Navy</span>
+        <span class="icon-tile-sub">1200 × 630</span>
+      </div>
+      <div class="icon-tile">
+        <img src="icons/social/avatar-400.png" alt="Avatar light" style="width:80px;height:80px;border-radius:50%;">
+        <span class="icon-tile-label">Avatar — Light</span>
+        <span class="icon-tile-sub">400 × 400</span>
+      </div>
+      <div class="icon-tile dark-bg">
+        <img src="icons/social/avatar-400-navy.png" alt="Avatar navy" style="width:80px;height:80px;border-radius:50%;">
+        <span class="icon-tile-label">Avatar — Navy</span>
+        <span class="icon-tile-sub">400 × 400</span>
+      </div>
+    </div>
+
+    <!-- Known trade-off note -->
+    <div style="margin-top:20px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;box-shadow:var(--card-shadow);">
+      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem;">Known trade-off</div>
+      <p style="font-size:13px;color:var(--text-2);line-height:1.6;">The lockup is ~2.08:1, so inside a square it fills about 41% of the height. Below 48 px the letterforms fall under the 24 px minimum — those sizes render the lockup in solid <code>#0E1B2A</code> navy so the silhouette stays legible. Expect the favicon at 16 px to read as a dark bar rather than letters — this is inherent to using a wide lockup in a square slot.</p>
+    </div>
   </section>
 
   <div class="divider"></div>
