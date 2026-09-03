@@ -973,68 +973,87 @@
 
   <div class="divider"></div>
 
-  <!-- Auth & Onboarding screens -->
+  <!-- Auth & Onboarding Flow -->
   <section class="section">
     <p class="section-label">Mobile · Auth &amp; Onboarding Flow</p>
-    <h2 class="section-title">Auth &amp; Onboarding screen designs</h2>
-    <p class="section-desc">Reference screens for the rider sign-in, map initialization, service hub, route selection, and ride category booking flow. White-dominant, Poppins typography, TSIA green accent.</p>
-    <div style="display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1.25rem;">
-      <div style="flex:1;min-width:180px;max-width:240px;">
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
-          <img src="auth-screen-1.png" alt="Auth — phone + Google sign-in" style="width:100%;display:block;">
+    <h2 class="section-title">Auth to Home Map &amp; Booking User Flow</h2>
+    <p class="section-desc">Complete user onboarding sequence: Phone/Google authentication &rarr; WhatsApp OTP verification &rarr; Post-login Home Map landing &rarr; Bottom sheet expansion &rarr; Service hub &rarr; Route selection &rarr; Ride category booking.</p>
+    
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:1.25rem;margin-top:1.25rem;">
+      <!-- Step 1 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 1 · Auth Entry</div>
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
+          <img src="auth-screen-1.png" alt="Step 1 — Phone + Google Sign-In" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">1. Phone entry · Google Sign-In · T&amp;C footer</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Phone entry · Google Sign-In · T&amp;C links</div>
       </div>
-      <div style="flex:1;min-width:180px;max-width:240px;">
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
-          <img src="auth-screen-2.jpg" alt="Auth — WhatsApp OTP" style="width:100%;display:block;">
+
+      <!-- Step 2 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 2 · Verification</div>
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
+          <img src="auth-screen-2.jpg" alt="Step 2 — WhatsApp OTP Verification" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">2. WhatsApp OTP · +254 selector · green Continue pill</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">WhatsApp OTP code · +254 selector · Continue pill</div>
       </div>
-      <div style="flex:1;min-width:180px;max-width:240px;">
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
-          <img src="auth-screen-3.png" alt="Map View — Compact search sheet" style="width:100%;display:block;">
+
+      <!-- Step 3 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 3 · Map Landing</div>
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
+          <img src="auth-screen-3.png" alt="Step 3 — Post-Login Home Map View" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">3. Map view · live driver pins · compact search sheet</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Live location map · Driver pins · Collapsed "Where to?" sheet</div>
       </div>
-      <div style="flex:1;min-width:180px;max-width:240px;">
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
-          <img src="auth-screen-4.png" alt="Map View — Expanded sheet with saved places" style="width:100%;display:block;">
+
+      <!-- Step 4 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 4 · Destination Sheet</div>
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
+          <img src="auth-screen-4.png" alt="Step 4 — Expanded Bottom Sheet" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">4. Map view · expanded sheet "Let's get you on your way" · saved places</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Sheet pulled up · "Let's get you on your way" · Saved places</div>
       </div>
-      <div style="flex:1;min-width:180px;max-width:240px;">
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
-          <img src="auth-screen-5.png" alt="Home Dashboard — Let's hit the road" style="width:100%;display:block;">
+
+      <!-- Step 5 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 5 · Service Hub</div>
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
+          <img src="auth-screen-5.png" alt="Step 5 — Home Dashboard Service Grid" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">5. Home hub · service grid · recent places · bottom nav</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Home hub · "Let's hit the road" · 2x3 service grid · bottom nav</div>
       </div>
-      <div style="flex:1;min-width:180px;max-width:240px;">
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
-          <img src="auth-screen-6.png" alt="Route Selection — Dropoff location" style="width:100%;display:block;">
+
+      <!-- Step 6 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 6 · Route Search</div>
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
+          <img src="auth-screen-6.png" alt="Step 6 — Route Destination Selector" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">6. Route selector · origin/dropoff search · distance indicators</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Route selector · origin &amp; dropoff search · distance indicators</div>
       </div>
-      <div style="flex:1;min-width:180px;max-width:240px;">
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
-          <img src="auth-screen-7.png" alt="Ride Selection — Route polyline & Confirm order" style="width:100%;display:block;">
+
+      <!-- Step 7 -->
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 7 · Ride Booking</div>
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
+          <img src="auth-screen-7.png" alt="Step 7 — Ride Category & Fare Estimation" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">7. Ride category selection · route map polyline · fare options · "Confirm order"</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Ride category selection · route map polyline · fare options · "Confirm order"</div>
       </div>
     </div>
+
     <div style="margin-top:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
-      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:.75rem;">Design notes</div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:.75rem;">User Flow Specifications</div>
       <ul style="font-size:13px;color:var(--text-2);line-height:1.8;padding-left:1.25rem;">
-        <li>Phone input uses Kenya (+254) as default country — flag + code in a pill selector</li>
-        <li>WhatsApp OTP preferred over SMS — green WhatsApp icon, "Learn more" link in accent green</li>
-        <li>Google Sign-In button: white background, 1.5px border, Google logo left-aligned, pill shape (radius 9999px)</li>
-        <li>Continue button: full-width, TSIA green (#2E8B4A), white text, pill shape, min-height 56px</li>
-        <li>T&amp;C footer: 12px, muted text, links in accent green</li>
-        <li>Compact Map View: full-screen map with user location beacon, nearby real-time driver icons (cars &amp; motorbikes), and compact bottom sheet search bar ("Where to?" + "Later")</li>
-        <li>Expanded Map Sheet ("Let's get you on your way"): drag/expand bottom sheet showing saved places list (Work, KCB, LIONS PLACE) with custom icons</li>
-        <li>Home Dashboard ("Let's hit the road"): 2x3 service grid tiles (Rides, Schedule, Motorbike, Bolt Food, Bolt Send), saved places list (Home, Work, KCB), and bottom navigation bar (Home, Activity, Account)</li>
-        <li>Route selector modal: origin pin ("Work"), focused dropoff search field with green highlight, add stop (+), swap (⇅) buttons, and distance indicators in kilometers (e.g. 2.3 km, 4.4 km)</li>
-        <li>Ride Category &amp; Order Confirmation: route map polyline preview (Pickup 3 min $\rightarrow$ Dropoff 12:19), vehicle option list (Motorbike KES 130 RECOMMENDED badge, Comfort KES 390, Basic KES 220, Bolt KES 290), payment method dropdown ("Personal ride"), and green "Confirm order" pill action button</li>
+        <li><strong>Auth Entry (Step 1):</strong> Phone input (+254 default country code) with WhatsApp OTP preference &amp; Google Sign-In button.</li>
+        <li><strong>OTP Verification (Step 2):</strong> 6-digit verification code entry with green Continue pill button.</li>
+        <li><strong>Home Map Landing (Step 3):</strong> Upon successful auth, navigate to main map view. Bottom sheet rests in collapsed state showing search input ("Where to?") and primary bottom nav bar (Home, Activity, Account).</li>
+        <li><strong>Sheet Expansion (Step 4):</strong> Swiping or tapping the bottom sheet pulls it up into half-screen/expanded view, revealing the heading "Let's get you on your way." along with saved/recent locations (Work, KCB, Lions Place Westlands).</li>
+        <li><strong>Service Hub (Step 5):</strong> Main dashboard featuring 2x3 service tiles (Rides, Schedule, Motorbike, Bolt Food, Bolt Send) and quick access to saved locations.</li>
+        <li><strong>Route Search (Step 6):</strong> Origin location ("Work") and dropoff location search field with green highlight, map preview thumbnail toggle, add stop (+), swap (⇅) buttons, and distance indicators in kilometers.</li>
+        <li><strong>Ride Booking (Step 7):</strong> Interactive route polyline map (Pickup 3 min &rarr; Dropoff 12:19), vehicle selection (Motorbike KES 130 RECOMMENDED badge, Comfort KES 390, Basic KES 220, Bolt KES 290), payment method dropdown ("Personal ride"), and green "Confirm order" action button.</li>
       </ul>
     </div>
   </section>
