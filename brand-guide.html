@@ -973,23 +973,53 @@
 
   <div class="divider"></div>
 
-  <!-- Auth screens -->
+  <!-- Auth & Onboarding screens -->
   <section class="section">
-    <p class="section-label">Mobile · Auth</p>
-    <h2 class="section-title">Auth screen designs</h2>
-    <p class="section-desc">Reference screens for the sign-in flow. White-dominant, Poppins, TSIA green accent. Two entry points: phone number (OTP via WhatsApp) and Google Sign-In.</p>
+    <p class="section-label">Mobile · Auth &amp; Onboarding Flow</p>
+    <h2 class="section-title">Auth &amp; Onboarding screen designs</h2>
+    <p class="section-desc">Reference screens for the rider sign-in, map initialization, service hub, route selection, and ride category booking flow. White-dominant, Poppins typography, TSIA green accent.</p>
     <div style="display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1.25rem;">
       <div style="flex:1;min-width:180px;max-width:240px;">
         <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
           <img src="auth-screen-1.png" alt="Auth — phone + Google sign-in" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Phone entry · Google Sign-In option · T&amp;C footer</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">1. Phone entry · Google Sign-In · T&amp;C footer</div>
       </div>
       <div style="flex:1;min-width:180px;max-width:240px;">
         <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
           <img src="auth-screen-2.jpg" alt="Auth — WhatsApp OTP" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">WhatsApp OTP · +254 country selector · green Continue pill</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">2. WhatsApp OTP · +254 selector · green Continue pill</div>
+      </div>
+      <div style="flex:1;min-width:180px;max-width:240px;">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
+          <img src="auth-screen-3.png" alt="Map View — Compact search sheet" style="width:100%;display:block;">
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">3. Map view · live driver pins · compact search sheet</div>
+      </div>
+      <div style="flex:1;min-width:180px;max-width:240px;">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
+          <img src="auth-screen-4.png" alt="Map View — Expanded sheet with saved places" style="width:100%;display:block;">
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">4. Map view · expanded sheet "Let's get you on your way" · saved places</div>
+      </div>
+      <div style="flex:1;min-width:180px;max-width:240px;">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
+          <img src="auth-screen-5.png" alt="Home Dashboard — Let's hit the road" style="width:100%;display:block;">
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">5. Home hub · service grid · recent places · bottom nav</div>
+      </div>
+      <div style="flex:1;min-width:180px;max-width:240px;">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
+          <img src="auth-screen-6.png" alt="Route Selection — Dropoff location" style="width:100%;display:block;">
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">6. Route selector · origin/dropoff search · distance indicators</div>
+      </div>
+      <div style="flex:1;min-width:180px;max-width:240px;">
+        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
+          <img src="auth-screen-7.png" alt="Ride Selection — Route polyline & Confirm order" style="width:100%;display:block;">
+        </div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">7. Ride category selection · route map polyline · fare options · "Confirm order"</div>
       </div>
     </div>
     <div style="margin-top:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
@@ -1000,6 +1030,11 @@
         <li>Google Sign-In button: white background, 1.5px border, Google logo left-aligned, pill shape (radius 9999px)</li>
         <li>Continue button: full-width, TSIA green (#2E8B4A), white text, pill shape, min-height 56px</li>
         <li>T&amp;C footer: 12px, muted text, links in accent green</li>
+        <li>Compact Map View: full-screen map with user location beacon, nearby real-time driver icons (cars &amp; motorbikes), and compact bottom sheet search bar ("Where to?" + "Later")</li>
+        <li>Expanded Map Sheet ("Let's get you on your way"): drag/expand bottom sheet showing saved places list (Work, KCB, LIONS PLACE) with custom icons</li>
+        <li>Home Dashboard ("Let's hit the road"): 2x3 service grid tiles (Rides, Schedule, Motorbike, Bolt Food, Bolt Send), saved places list (Home, Work, KCB), and bottom navigation bar (Home, Activity, Account)</li>
+        <li>Route selector modal: origin pin ("Work"), focused dropoff search field with green highlight, add stop (+), swap (⇅) buttons, and distance indicators in kilometers (e.g. 2.3 km, 4.4 km)</li>
+        <li>Ride Category &amp; Order Confirmation: route map polyline preview (Pickup 3 min $\rightarrow$ Dropoff 12:19), vehicle option list (Motorbike KES 130 RECOMMENDED badge, Comfort KES 390, Basic KES 220, Bolt KES 290), payment method dropdown ("Personal ride"), and green "Confirm order" pill action button</li>
       </ul>
     </div>
   </section>
