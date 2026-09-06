@@ -1,6 +1,6 @@
 <title>TSIA Brand Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=DM+Mono:wght@400;500&family=Poppins:wght@400;700;800&display=swap">
 
 <style>
   /* ── Token system ── */
@@ -20,6 +20,14 @@
     --mono-bg:    rgba(14,27,42,.06);
     --swatch-shadow: 0 2px 8px rgba(14,27,42,.12);
     --card-shadow:   0 1px 3px rgba(14,27,42,.06), 0 4px 16px rgba(14,27,42,.06);
+    --shadow-sm:     0 1px 2px rgba(14,27,42,.06), 0 1px 4px rgba(14,27,42,.04);
+    --shadow-md:     0 2px 8px rgba(14,27,42,.08), 0 4px 16px rgba(14,27,42,.06);
+    --shadow-lg:     0 4px 16px rgba(14,27,42,.12), 0 8px 32px rgba(14,27,42,.08);
+    --shadow-xl:     0 8px 32px rgba(14,27,42,.16), 0 16px 64px rgba(14,27,42,.12);
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+    --space-24: 96px;
     --prompt-bg:  #0E1B2A;
     --prompt-border: rgba(0,135,62,.30);
     --prompt-text: #c9d8e8;
@@ -529,7 +537,7 @@
 
 <!-- Hero -->
 <header class="hero">
-  <p class="hero-eyebrow">Design System · v1.1</p>
+  <p class="hero-eyebrow">Design System · v1.2</p>
   <div class="hero-mark">
     <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="16" cy="16" r="7" fill="white" opacity="0.9"/>
@@ -538,10 +546,10 @@
     </svg>
   </div>
   <h1>TSIA <span>Brand</span> Guide</h1>
-  <p class="hero-sub">The visual language for Transport Systems Infrastructure Africa — admin dashboard, mobile apps, and developer tooling.</p>
+  <p class="hero-sub">The visual language for Transport Systems Infrastructure Africa — admin dashboard, mobile apps, customer web SPA, and developer tooling.</p>
   <div class="hero-meta">
     <span class="hero-tag">TSIA Platform</span>
-    <span class="hero-tag">DM Sans · DM Mono</span>
+    <span class="hero-tag">Poppins · DM Sans · DM Mono</span>
     <span class="hero-tag">Kenya · KES · EAT</span>
   </div>
 </header>
@@ -636,7 +644,7 @@
   <section class="section">
     <p class="section-label">Typography</p>
     <h2 class="section-title">Typography</h2>
-    <p class="section-desc">Two typefaces by platform. <strong>DM Sans</strong> for web admin and developer docs. <strong>Poppins</strong> for Flutter mobile apps (Rider &amp; Driver). DM Mono for tokens, IDs, amounts, and timestamps on all platforms.</p>
+    <p class="section-desc">Two typefaces by platform. <strong>Poppins</strong> for Flutter mobile apps (Rider &amp; Driver) and the customer web SPA (tsiarides.net). <strong>DM Sans</strong> for the admin dashboard and developer docs. DM Mono for tokens, IDs, amounts, and timestamps on all platforms.</p>
     <div class="type-grid">
       <div class="type-row">
         <span class="type-specimen" style="font-size:2.2rem;font-weight:800;letter-spacing:-0.03em;">Dashboard</span>
@@ -671,6 +679,33 @@
 
   <div class="divider"></div>
 
+  <!-- Typography · Web display scale -->
+  <section class="section">
+    <p class="section-label">Typography · Web</p>
+    <h2 class="section-title">Customer web display scale</h2>
+    <p class="section-desc">Poppins display scale for tsiarides.net. Ceiling 72px, tracking floor −0.035em — Poppins runs wide and tighter letterforms touch below that floor.</p>
+    <div class="type-grid">
+      <div class="type-row">
+        <span class="type-specimen" style="font-family:'Poppins',sans-serif;font-size:clamp(2.75rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.035em;line-height:1.02;">Move freely, live boldly</span>
+        <span class="type-meta">Poppins 800 · clamp(2.75rem,6vw,4.5rem) · −0.035em · lh 1.02 · display-1</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-family:'Poppins',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.03em;line-height:1.08;">Nairobi at your fingertips</span>
+        <span class="type-meta">Poppins 700 · clamp(2rem,4vw,3rem) · −0.03em · lh 1.08 · display-2</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-0.02em;line-height:1.15;">Why drivers choose TSIA</span>
+        <span class="type-meta">Poppins 700 · clamp(1.5rem,2.5vw,2rem) · −0.02em · lh 1.15 · display-3</span>
+      </div>
+      <div class="type-row">
+        <span class="type-specimen" style="font-family:'Poppins',sans-serif;font-size:clamp(1.0625rem,1.5vw,1.25rem);font-weight:400;line-height:1.55;">Safe, affordable rides across Nairobi — book in seconds, pay with M-Pesa.</span>
+        <span class="type-meta">Poppins 400 · clamp(1.0625rem,1.5vw,1.25rem) · lh 1.55 · lead</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- Spacing & radius -->
   <section class="section">
     <p class="section-label">Spacing &amp; Radius</p>
@@ -688,6 +723,10 @@
           <tr><td>--space-4</td><td>16px</td><td>Page margin, section padding</td></tr>
           <tr><td>--space-6</td><td>24px</td><td>Section gap, large card padding</td></tr>
           <tr><td>--space-8</td><td>32px</td><td>Section break</td></tr>
+          <tr><td>--space-12</td><td>48px</td><td>Marketing section padding</td></tr>
+          <tr><td>--space-16</td><td>64px</td><td>Hero vertical rhythm</td></tr>
+          <tr><td>--space-20</td><td>80px</td><td>Large section gap</td></tr>
+          <tr><td>--space-24</td><td>96px</td><td>Full-bleed section break</td></tr>
           <tr><td>--target-min</td><td>48px</td><td>Minimum tap/click target (iOS + Android)</td></tr>
           <tr><td>--radius-sm</td><td>8px</td><td>Chips, badges, small buttons</td></tr>
           <tr><td>--radius</td><td>12px</td><td>Cards, inputs, standard buttons</td></tr>
@@ -699,6 +738,46 @@
   </section>
 
 
+
+  <!-- Shadow ramp -->
+  <section class="section">
+    <p class="section-label">Shadows</p>
+    <h2 class="section-title">Elevation ramp</h2>
+    <p class="section-desc">All shadows are built on the brand navy tint — never neutral black. The ramp progresses from surface-lift to modal-level depth.</p>
+    <div class="token-wrap">
+      <table class="token-table">
+        <thead>
+          <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>--shadow-sm</td><td>0 1px 2px rgba(14,27,42,.06), 0 1px 4px rgba(14,27,42,.04)</td><td>Subtle card lift, form inputs</td></tr>
+          <tr><td>--shadow-md</td><td>0 2px 8px rgba(14,27,42,.08), 0 4px 16px rgba(14,27,42,.06)</td><td>Cards, dropdowns, hover states</td></tr>
+          <tr><td>--shadow-lg</td><td>0 4px 16px rgba(14,27,42,.12), 0 8px 32px rgba(14,27,42,.08)</td><td>Sticky nav, floating panels</td></tr>
+          <tr><td>--shadow-xl</td><td>0 8px 32px rgba(14,27,42,.16), 0 16px 64px rgba(14,27,42,.12)</td><td>Modals, overlays, hero cards</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-top:20px;">
+      <div style="background:var(--card);border-radius:12px;padding:20px 16px;box-shadow:var(--shadow-sm);text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--green);margin-bottom:6px;">--shadow-sm</div>
+        <div style="font-size:12px;color:var(--text-3);">Subtle lift</div>
+      </div>
+      <div style="background:var(--card);border-radius:12px;padding:20px 16px;box-shadow:var(--shadow-md);text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--green);margin-bottom:6px;">--shadow-md</div>
+        <div style="font-size:12px;color:var(--text-3);">Cards</div>
+      </div>
+      <div style="background:var(--card);border-radius:12px;padding:20px 16px;box-shadow:var(--shadow-lg);text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--green);margin-bottom:6px;">--shadow-lg</div>
+        <div style="font-size:12px;color:var(--text-3);">Floating panels</div>
+      </div>
+      <div style="background:var(--card);border-radius:12px;padding:20px 16px;box-shadow:var(--shadow-xl);text-align:center;">
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--green);margin-bottom:6px;">--shadow-xl</div>
+        <div style="font-size:12px;color:var(--text-3);">Modals</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
 
   <!-- Usage rules -->
   <section class="section">
@@ -962,58 +1041,58 @@
   <section class="section">
     <p class="section-label">Mobile · Splash</p>
     <h2 class="section-title">App splash screen</h2>
-    <p class="section-desc">The approved splash design for the TSIA Rider app. White-dominant, logo centered top, illustrated car + cityscape fading into green tones at bottom. Use as the reference for <code>flutter_native_splash</code> configuration.</p>
+    <p class="section-desc">The approved splash design for the TSIA Rider app. White-dominant, wordmark centered top, illustrated car + cityscape fading into green tones at bottom. Use as the reference for <code>flutter_native_splash</code> configuration.</p>
     <div style="margin-top:1.25rem;max-width:240px;">
       <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);">
-        <img src="tsia-splash.png" alt="TSIA splash screen" style="width:100%;display:block;">
+        <img src="rider-screen-splash.png" alt="TSIA Rider splash screen" style="width:100%;display:block;">
       </div>
-      <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Rider app splash · white bg · Poppins · #1B2A4A navy + #2E8B4A green</div>
+      <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Rider app splash · white bg · Poppins · #1B2A4A navy + #2E8B4A green · "Go Anywhere"</div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- Auth & Onboarding Flow -->
+  <!-- Rider App screens -->
   <section class="section">
-    <p class="section-label">Mobile · Auth &amp; Onboarding Flow</p>
-    <h2 class="section-title">Auth to Home Map &amp; Booking User Flow</h2>
-    <p class="section-desc">Complete user onboarding sequence: Phone/Google authentication &rarr; WhatsApp OTP verification &rarr; Post-login Home Map landing &rarr; Bottom sheet expansion &rarr; Service hub &rarr; Route selection &rarr; Ride category booking.</p>
-    
+    <p class="section-label">Mobile · Rider App</p>
+    <h2 class="section-title">Rider app screens</h2>
+    <p class="section-desc">Core screens of the TSIA Rider app. White surfaces, Poppins typeface, green accent on interactive elements. Bottom nav: Home · Activity · Account.</p>
+
     <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:1.25rem;margin-top:1.25rem;">
-      <!-- Step 1 -->
+      <!-- Home map -->
       <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 1 · Auth Entry</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Home · Map</div>
         <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="auth-screen-1.png" alt="Step 1 — Phone + Google Sign-In" style="width:100%;display:block;">
+          <img src="rider-screen-home.png" alt="Rider — Home map view" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Phone entry · Google Sign-In · T&amp;C links</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Live map · "Where to?" pill · Later button · bell notification</div>
       </div>
 
-      <!-- Step 2 -->
+      <!-- Route search -->
       <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 2 · Verification</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Route · Search</div>
         <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="auth-screen-2.jpg" alt="Step 2 — WhatsApp OTP Verification" style="width:100%;display:block;">
+          <img src="rider-screen-route.png" alt="Rider — Route destination search" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">WhatsApp OTP code · +254 selector · Continue pill</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Origin pre-filled · Destination search · Recent places with distance</div>
       </div>
 
-      <!-- Step 3 -->
+      <!-- Activity -->
       <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 3 · Map Landing</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Activity</div>
         <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="auth-screen-3.png" alt="Step 3 — Post-Login Home Map View" style="width:100%;display:block;">
+          <img src="rider-screen-activity.png" alt="Rider — Activity / ride history" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Live location map · Driver pins · Collapsed "Where to?" sheet</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Ride history · map thumbnail · KES amount · Rebook action</div>
       </div>
 
-      <!-- Step 4 -->
+      <!-- Account -->
       <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Step 4 · Destination Sheet</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Account</div>
         <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="auth-screen-4.png" alt="Step 4 — Expanded Bottom Sheet" style="width:100%;display:block;">
+          <img src="rider-screen-account.png" alt="Rider — Account screen" style="width:100%;display:block;">
         </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Sheet pulled up · "Let's get you on your way" · Saved places</div>
+        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Profile · Wallet · Payment · Support · Safety · Settings · Referrals</div>
       </div>
 
       <!-- Step 5 -->
@@ -1045,148 +1124,12 @@
     </div>
 
     <div style="margin-top:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
-      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:.75rem;">User Flow Specifications</div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:.75rem;">Screen Specifications</div>
       <ul style="font-size:13px;color:var(--text-2);line-height:1.8;padding-left:1.25rem;">
-        <li><strong>Auth Entry (Step 1):</strong> Phone input (+254 default country code) with WhatsApp OTP preference &amp; Google Sign-In button.</li>
-        <li><strong>OTP Verification (Step 2):</strong> 6-digit verification code entry with green Continue pill button.</li>
-        <li><strong>Home Map Landing (Step 3):</strong> Upon successful auth, navigate to main map view. Bottom sheet rests in collapsed state showing search input ("Where to?") and primary bottom nav bar (Home, Activity, Account).</li>
-        <li><strong>Sheet Expansion (Step 4):</strong> Swiping or tapping the bottom sheet pulls it up into half-screen/expanded view, revealing the heading "Let's get you on your way." along with saved/recent locations (Work, KCB, Lions Place Westlands).</li>
-        <li><strong>Service Hub (Step 5):</strong> Main dashboard featuring 2x3 service tiles (Rides, Schedule, Motorbike, Bolt Food, Bolt Send) and quick access to saved locations.</li>
-        <li><strong>Route Search (Step 6):</strong> Origin location ("Work") and dropoff location search field with green highlight, map preview thumbnail toggle, add stop (+), swap (⇅) buttons, and distance indicators in kilometers.</li>
-        <li><strong>Ride Booking (Step 7):</strong> Interactive route polyline map (Pickup 3 min &rarr; Dropoff 12:19), vehicle selection (Motorbike KES 130 RECOMMENDED badge, Comfort KES 390, Basic KES 220, Bolt KES 290), payment method dropdown ("Personal ride"), and green "Confirm order" action button.</li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- Activity & Ride History Flow -->
-  <section class="section">
-    <p class="section-label">Mobile · Activity</p>
-    <h2 class="section-title">Activity &amp; Ride History User Flow</h2>
-    <p class="section-desc">Reference screens for viewing past ride history, inspecting individual ride details &amp; receipts, contacting drivers, and requesting support for ride issues.</p>
-    
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:1.25rem;margin-top:1.25rem;">
-      <!-- Screen 1 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 1 · All Rides</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="activity-screen-1.png" alt="Screen 1 — All Rides List" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Ride history list · route map preview · monthly grouping · rebook button</div>
-      </div>
-
-      <!-- Screen 2 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 2 · Ride Detail</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="activity-screen-2.png" alt="Screen 2 — Ride Detail" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Driver profile &amp; rating · route timeline · payment breakdown · action buttons</div>
-      </div>
-
-      <!-- Screen 3 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 3 · Full Ride Detail</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="activity-screen-3.png" alt="Screen 3 — Full Ride Detail with Corporate Account" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Full ride detail · corporate account billing (WAVETEC) · receipt summary</div>
-      </div>
-
-      <!-- Screen 4 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 4 · Contact Driver</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="activity-screen-4.png" alt="Screen 4 — Contact Driver Options" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Contact options modal · call in-app · call driver by phone</div>
-      </div>
-
-      <!-- Screen 5 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 5 · Get Help</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="activity-screen-5.png" alt="Screen 5 — Get Help With Ride" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Support issue selector · fare queries · lost items · driver expectations</div>
-      </div>
-    </div>
-
-    <div style="margin-top:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
-      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:.75rem;">Activity &amp; Support Specifications</div>
-      <ul style="font-size:13px;color:var(--text-2);line-height:1.8;padding-left:1.25rem;">
-        <li><strong>All Rides List (Screen 1):</strong> Accessible via the Activity tab in the bottom navigation. Filter button top right. Highlights active/recent ride with route polyline map snippet (9.5 km • 25 min), fare (KES 240), and quick Rebook action. Past trips grouped chronologically by month (e.g. August) with custom tags ("Work").</li>
-        <li><strong>Ride Details (Screens 2 &amp; 3):</strong> Header shows driver avatar, driver name, ride timestamp, and rider star rating given. Displays interactive route polyline map preview, pickup/dropoff address timeline with timestamps, and primary action buttons ("Contact driver", "Get help with ride", "Rebook"). Payment breakdown itemizes base fare, unpaid balances, and corporate account billing (e.g. WAVETEC AFRICA LTD).</li>
-        <li><strong>Contact Driver Options (Screen 4):</strong> Bottom sheet modal providing two contact options — masked VOIP in-app calling ("Call driver in-app") or direct cellular calling ("Call driver by phone").</li>
-        <li><strong>Get Help with Ride (Screen 5):</strong> Support issue selector categorized by common rider inquiries including fare discrepancies ("I was charged more than expected", "I was charged twice"), lost items ("I lost an item"), trip disputes ("My ride happened without me"), driver feedback ("The driver didn't meet expectations"), wait fees, tips, and general inquiries ("Something else").</li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- Account & Settings Flow -->
-  <section class="section">
-    <p class="section-label">Mobile · Account</p>
-    <h2 class="section-title">Account, Profile &amp; Settings Flow</h2>
-    <p class="section-desc">Reference screens for the user account dashboard, rider profile details, payment methods &amp; balance, in-ride safety controls, and saved favorite locations.</p>
-    
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:1.25rem;margin-top:1.25rem;">
-      <!-- Screen 1 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 1 · Account Hub</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="account-screen-1.png" alt="Screen 1 — Account Dashboard Hub" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Account dashboard · rating &amp; identity banner · navigation links · ecosystem shortcuts</div>
-      </div>
-
-      <!-- Screen 2 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 2 · Profile Details</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="account-screen-2.png" alt="Screen 2 — Rider Profile Details" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Rider profile · photo management · phone &amp; verified email · identity verification status</div>
-      </div>
-
-      <!-- Screen 3 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 3 · Payment Options</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="account-screen-3.png" alt="Screen 3 — Payment Methods & In-App Balance" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Bolt balance card · payment options (M-Pesa, Airtel, Cash, Corporate) · work profile setup</div>
-      </div>
-
-      <!-- Screen 4 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 4 · Safety Settings</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="account-screen-4.png" alt="Screen 4 — Rider Safety Settings" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Ride safety features · 4-digit pickup code toggle · trusted emergency contacts</div>
-      </div>
-
-      <!-- Screen 5 -->
-      <div style="display:flex;flex-direction:column;align-items:center;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;">Screen 5 · Saved Places</div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);border:1px solid var(--border);width:100%;">
-          <img src="account-screen-5.png" alt="Screen 5 — Favorite & Saved Places" style="width:100%;display:block;">
-        </div>
-        <div style="font-size:12px;color:var(--text-3);margin-top:.75rem;text-align:center;">Favorite destinations · Home, Work, and custom saved addresses · quick add place</div>
-      </div>
-    </div>
-
-    <div style="margin-top:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;">
-      <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:.75rem;">Account &amp; Management Specifications</div>
-      <ul style="font-size:13px;color:var(--text-2);line-height:1.8;padding-left:1.25rem;">
-        <li><strong>Account Hub (Screen 1):</strong> Primary Account tab displaying user avatar, name (Max Well), 5.00 rider star rating, green identity verification banner ("Enjoy smoother and safer rides — Verify identity"), central navigation list (Profile, Payment, Support, Safety, Saved places, Settings), and ecosystem product cards (Bolt Plus benefits, Bolt Food, Promotions).</li>
-        <li><strong>Profile Details (Screen 2):</strong> User photo uploader with privacy disclaimer ("Drivers can only see your photo during pickup"), full name, registered phone number (+254 country code), verified email badge, and identity verification prompt with green CTA button.</li>
-        <li><strong>Payment Management (Screen 3):</strong> Wallet balance overview (KES 108) with auto-deduct notice and balance transaction history links. Selectable payment method radio options for local gateways (M-Pesa, Airtel money, Cash, and corporate billing WAVETEC AFRICA LTD), debit/credit card addition, and work profile configuration.</li>
-        <li><strong>Safety Controls (Screen 4):</strong> Rider security toggles including 4-digit pickup code verification (Enabled) and emergency trusted contacts sharing.</li>
-        <li><strong>Saved Places (Screen 5):</strong> Quick-access location shortcuts for frequent trip origins and dropoffs: Home (Seniors Flats, Riruta), Work (Fortis Suites, Hospital Road), custom landmark (KCB KenCom Building), and "+ Add a place" input trigger.</li>
+        <li><strong>Home:</strong> Full-screen Google Map. Collapsed bottom sheet shows "Where to?" search pill + "Later" date picker. Bell icon top-right for notifications.</li>
+        <li><strong>Route:</strong> Origin auto-filled from current location. Destination field active with green border. Recent places list shows address + distance (km). Swap-route button top-right.</li>
+        <li><strong>Activity:</strong> Rides grouped by month. Most-recent ride shows map thumbnail + fare + Rebook pill. Older rides render as compact list rows with vehicle icon, destination, time, and KES fare.</li>
+        <li><strong>Account:</strong> Avatar + rider name + rating row. Menu: Profile, Wallet, Payment, Support, Safety, Saved places, Business profile, Settings, Referrals, About Us, Log Out. Log Out in danger red.</li>
       </ul>
     </div>
   </section>
@@ -1605,7 +1548,7 @@ Info / neutral      bg <span class="pv">#37D5F2</span>  text <span class="pv">#0
 </main>
 
 <footer class="footer">
-  TSIA Brand Guide · v1.1 · 2026 · ALMAA NISSI LIMITED
+  TSIA Brand Guide · v1.2 · 2026 · ALMAA NISSI LIMITED
 </footer>
 
 <script>
