@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TSIA Product Walkthrough</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap">
+<style>
+  :root {
+    --green:   #00873E;
+    --green-2: #2FD36A;
+    --navy:    #0E1B2A;
+    --page:    #F6F8FA;
+    --surface: #FFFFFF;
+    --border:  #E2E8F0;
+    --text-1:  #0E1B2A;
+    --text-2:  #4A5568;
+    --text-3:  #718096;
+    --shadow-sm: 0 1px 2px rgba(14,27,42,.06), 0 1px 4px rgba(14,27,42,.04);
+    --shadow-md: 0 2px 8px rgba(14,27,42,.08), 0 4px 16px rgba(14,27,42,.06);
+    --shadow-lg: 0 4px 16px rgba(14,27,42,.12), 0 8px 32px rgba(14,27,42,.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--page);
+    color: var(--text-1);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Sticky nav ── */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 24px;
+    height: 48px;
+  }
+  .top-nav-brand {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-right: auto;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .top-nav-brand svg { flex-shrink: 0; }
+  .top-nav-links {
+    display: flex;
+    gap: 2px;
+  }
+  .nav-pill {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-2);
+    padding: 5px 12px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background .15s, color .15s;
+    white-space: nowrap;
+  }
+  .nav-pill:hover { background: #F0FDF4; color: var(--green); }
+  .nav-pill.active { background: #E6F9EF; color: var(--green); font-weight: 600; }
+  .nav-pill.coming {
+    color: var(--text-3);
+    cursor: default;
+  }
+  .nav-pill.coming:hover { background: none; color: var(--text-3); }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--navy);
+    padding: 64px 24px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,135,62,.22), transparent);
+  }
+  .hero-eyebrow {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-2);
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    color: #fff;
+    text-wrap: balance;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero h1 span { color: var(--green-2); }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(238,242,247,.55);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.55;
+    position: relative;
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 24px 100px;
+  }
+
+  /* ── Section ── */
+  .section { margin-bottom: 80px; }
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--text-2);
+    max-width: 680px;
+    line-height: 1.65;
+    margin-bottom: 36px;
+  }
+
+  /* ── Screen grid ── */
+  .screen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px 20px;
+  }
+
+  /* ── Phone frame ── */
+  .phone-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .phone-frame {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 1080 / 2400;
+    background: #1A1A1A;
+    border-radius: 28px;
+    padding: 6px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.08),
+      var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .phone-frame::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 5px;
+    background: #2a2a2a;
+    border-radius: 100px;
+    z-index: 2;
+  }
+  .phone-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 23px;
+    display: block;
+  }
+  .screen-caption {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-2);
+    text-align: center;
+    line-height: 1.4;
+    max-width: 180px;
+  }
+  .screen-num {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-3);
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  /* ── Coming-soon section ── */
+  .coming-section {
+    background: var(--surface);
+    border: 1.5px dashed var(--border);
+    border-radius: 12px;
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .coming-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-2);
+    margin-bottom: 6px;
+  }
+  .coming-section p {
+    font-size: 13.5px;
+    color: var(--text-3);
+  }
+
+  /* ── Back link ── */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-3);
+    text-decoration: none;
+    margin-bottom: 36px;
+    transition: color .15s;
+  }
+  .back-link:hover { color: var(--green); }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 12px;
+    color: var(--text-3);
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--green); text-decoration: none; }
+
+  /* ── Print ── */
+  @media print {
+    .top-nav { position: static; }
+    body { background: #fff; }
+    .section { page-break-inside: avoid; }
+    .phone-frame { box-shadow: 0 0 0 1px #ccc; }
+  }
+
+  @media (max-width: 480px) {
+    .screen-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 12px; }
+    .top-nav-brand span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Sticky navigation -->
+<nav class="top-nav">
+  <a class="top-nav-brand" href="brand-guide.html">
+    <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="7" fill="#00873E" opacity="0.9"/>
+      <circle cx="16" cy="16" r="3.5" fill="#0E1B2A"/>
+      <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#00873E" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+    <span>TSIA Docs</span>
+  </a>
+  <div class="top-nav-links">
+    <a class="nav-pill active" href="#rider">Rider</a>
+    <span class="nav-pill coming">Driver</span>
+    <span class="nav-pill coming">Admin</span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <p class="hero-eyebrow">Product Walkthrough</p>
+  <h1>TSIA <span>Rider</span> App</h1>
+  <p class="hero-sub">Every screen of the live Rider app — from splash to referrals — captured on production 2026-09-13.</p>
+</header>
+
+<main class="container">
+
+  <a class="back-link" href="brand-guide.html">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Brand Guide
+  </a>
+
+  <!-- Rider section -->
+  <section class="section" id="rider">
+    <p class="section-label">Rider App</p>
+    <h2 class="section-title">Full rider journey</h2>
+    <p class="section-desc">17 screens from splash through referrals. White surfaces, Poppins typeface, green accent on interactive elements. Cash, M-Pesa, and wallet payment. Bottom nav: Home · Activity · Account.</p>
+
+    <div class="screen-grid">
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-splash.png" alt="Splash screen" loading="lazy">
+        </div>
+        <p class="screen-num">01</p>
+        <p class="screen-caption">Brand splash.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-home.png" alt="Home screen" loading="lazy">
+        </div>
+        <p class="screen-num">02</p>
+        <p class="screen-caption">Home: live map with nearby drivers and the Where to? search.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-home-panel.png" alt="Home panel" loading="lazy">
+        </div>
+        <p class="screen-num">03</p>
+        <p class="screen-caption">Ride now or schedule, plus saved places.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-route.png" alt="Route screen" loading="lazy">
+        </div>
+        <p class="screen-num">04</p>
+        <p class="screen-caption">Route: pickup, destination, saved and recent places with distance.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-search.png" alt="Destination search" loading="lazy">
+        </div>
+        <p class="screen-num">05</p>
+        <p class="screen-caption">Destination search, Kenya-only Google Places.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-estimate-dash.png" alt="Fare estimate" loading="lazy">
+        </div>
+        <p class="screen-num">06</p>
+        <p class="screen-caption">Choose a service. Fare shown before booking. Cash, M-Pesa or wallet.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-arriving.png" alt="Driver arriving" loading="lazy">
+        </div>
+        <p class="screen-num">07</p>
+        <p class="screen-caption">Driver assigned: vehicle, rating, ETA, pickup code, chat, call, share trip, safety.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-arrived.png" alt="Driver arrived" loading="lazy">
+        </div>
+        <p class="screen-num">08</p>
+        <p class="screen-caption">Driver has arrived.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-in-ride.png" alt="In-ride screen" loading="lazy">
+        </div>
+        <p class="screen-num">09</p>
+        <p class="screen-caption">In ride: drop-off ETA, route, payment.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-rating.png" alt="Rating screen" loading="lazy">
+        </div>
+        <p class="screen-num">10</p>
+        <p class="screen-caption">Rate the driver with compliments and optional tip.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-activity.png" alt="Activity screen" loading="lazy">
+        </div>
+        <p class="screen-num">11</p>
+        <p class="screen-caption">Activity: ride history with map card and one-tap rebook.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-ride-detail.png" alt="Ride detail" loading="lazy">
+        </div>
+        <p class="screen-num">12</p>
+        <p class="screen-caption">Ride detail: timeline, receipt, contact driver, get help, rebook.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-account.png" alt="Account screen" loading="lazy">
+        </div>
+        <p class="screen-num">13</p>
+        <p class="screen-caption">Account hub.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-payment.png" alt="Payment methods" loading="lazy">
+        </div>
+        <p class="screen-num">14</p>
+        <p class="screen-caption">Payment methods and default for new rides.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-safety.png" alt="Safety screen" loading="lazy">
+        </div>
+        <p class="screen-num">15</p>
+        <p class="screen-caption">Emergency contacts.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-wallet.png" alt="Wallet screen" loading="lazy">
+        </div>
+        <p class="screen-num">16</p>
+        <p class="screen-caption">Wallet with M-Pesa top-up.</p>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone-frame">
+          <img src="walkthrough/rider-screen-referrals.png" alt="Referrals screen" loading="lazy">
+        </div>
+        <p class="screen-num">17</p>
+        <p class="screen-caption">Referral code and how it works.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Driver — coming -->
+  <section class="section" id="driver">
+    <p class="section-label">Driver App</p>
+    <h2 class="section-title">Driver walkthrough</h2>
+    <div class="coming-section">
+      <h3>Coming soon</h3>
+      <p>Driver app screens will be added here.</p>
+    </div>
+  </section>
+
+  <!-- Admin — coming -->
+  <section class="section" id="admin">
+    <p class="section-label">Admin Dashboard</p>
+    <h2 class="section-title">Admin walkthrough</h2>
+    <div class="coming-section">
+      <h3>Coming soon</h3>
+      <p>Admin dashboard screens will be added here.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  TSIA Product Walkthrough · 2026 · ALMAA NISSI LIMITED &nbsp;·&nbsp;
+  <a href="brand-guide.html">Brand Guide</a>
+</footer>
+
+</body>
+</html>
