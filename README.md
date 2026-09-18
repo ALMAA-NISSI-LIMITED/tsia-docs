@@ -1,4 +1,4 @@
-# TSIA Brand .
+# TSIA Brand Guide
 
 Visual design system for **Transport Systems Infrastructure Africa** — the Kenyan ride-hailing platform covering the admin dashboard, Flutter mobile apps (Rider & Driver), customer web SPA (tsiarides.net), and developer tooling.
 
